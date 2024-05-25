@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date{dd.MM.yyyy HH:mm:ss} [%thread] %-5level in %logger%n%message%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="warn"/>
+    <logger name="com.github.dockerjava" level="warn"/>
+    <logger name="com.zaxxer" level="warn"/>
+    <logger name="io.micrometer" level="warn"/>
+    <logger name="java.lang.ProcessBuilder" level="warn"/>
+    <logger name="javax.management" level="warn"/>
+    <logger name="org.apache.catalina" level="warn"/>
+    <logger name="org.aspectj" level="warn"/>
+    <logger name="org.flywaydb" level="warn"/>
+    <logger name="org.hibernate" level="warn"/>
+    <logger name="org.jboss.logging" level="warn"/>
+    <logger name="org.junit.jupiter.engine" level="warn"/>
+    <logger name="org.postgresql" level="warn"/>
+    <logger name="org.springdoc" level="warn"/>
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.testcontainers" level="warn"/>
+    <logger name="springfox.documentation" level="warn"/>
+    <logger name="tc" level="warn"/>
+    <logger name="com.github.vhromada" level="all"/>
+    <root level="all">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: 'postgres:15.7'
+    environment:
+      - 'POSTGRES_DB=catalog'
+      - 'POSTGRES_PASSWORD=catalog'
+      - 'POSTGRES_USER=catalog'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ~/apps/postgres/catalog-dev:/var/lib/postgresql/data
+  app:
+    depends_on:
+      - postgres
+    ports:
+      - '8100:8080'
+    build:
+      context: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/catalog
+      - SPRING_DATASOURCE_USERNAME=catalog
+      - SPRING_DATASOURCE_PASSWORD=catalog

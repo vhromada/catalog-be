@@ -1,0 +1,66 @@
+management:
+  endpoint:
+    env:
+      enabled: true
+      show-values: always
+    flyway:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /app
+      exposure:
+        include: '*'
+  info:
+    build:
+      enabled: true
+    env:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+    java:
+      enabled: true
+    os:
+      enabled: true
+spring:
+  application:
+    name: Catalog
+  datasource:
+    name: Catalog
+    url: jdbc:postgresql://localhost:5432/catalog
+    username: lavina
+    password: stargate
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      indent_output: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+springdoc:
+  group-configs[0]:
+    group: catalog
+    paths-to-match: /rest/**
+  swagger-ui:
+    doc-expansion: none
+    groups-order: asc
+    tags-sorter: alpha
+log:
+  payload:
+    sensitive: '"password"\s*:\s*".*?";"password":"*****"|[a,A]uthorization=\[Basic.*?\];authorization=[Basic *****]|[a,A]uthorization:\"Basic.*?\";authorization:\"Basic *****\"'
