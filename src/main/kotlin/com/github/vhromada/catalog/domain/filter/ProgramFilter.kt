@@ -25,7 +25,7 @@ data class ProgramFilter(
         return name.isNullOrBlank()
     }
 
-    override fun process(root: Root<Program>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder): List<Predicate> {
+    override fun process(root: Root<Program>, query: CriteriaQuery<*>?, criteriaBuilder: CriteriaBuilder): List<Predicate> {
         val result = mutableListOf<Predicate>()
         getPredicate(criteriaBuilder, root, "name", name, FieldOperation.LIKE)?.let { result.add(it) }
         return result.toList()

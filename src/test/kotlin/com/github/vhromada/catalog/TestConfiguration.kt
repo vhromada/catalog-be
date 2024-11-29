@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.PropertySource
 import org.springframework.data.domain.AuditorAware
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector
 import java.time.LocalDateTime
 import java.util.Optional
 
@@ -80,6 +81,16 @@ class TestConfiguration {
                 return source
             }
         }
+    }
+
+    /**
+     * Returns MVC handler mapping introspector.
+     *
+     * @return MVC handler mapping introspector.
+     */
+    @Bean
+    fun mvcHandlerMappingIntrospector(): HandlerMappingIntrospector {
+        return HandlerMappingIntrospector()
     }
 
 }

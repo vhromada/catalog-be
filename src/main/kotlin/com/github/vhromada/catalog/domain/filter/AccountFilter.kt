@@ -35,7 +35,7 @@ data class AccountFilter(
         return uuid.isNullOrBlank() && username.isNullOrBlank()
     }
 
-    override fun process(root: Root<Account>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder): List<Predicate> {
+    override fun process(root: Root<Account>, query: CriteriaQuery<*>?, criteriaBuilder: CriteriaBuilder): List<Predicate> {
         val result = mutableListOf<Predicate>()
         getPredicate(criteriaBuilder, root, "uuid", uuid)?.let { result.add(it) }
         getPredicate(criteriaBuilder, root, "username", username, usernameOperation)?.let { result.add(it) }

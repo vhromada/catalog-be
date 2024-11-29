@@ -38,7 +38,7 @@ abstract class JpaFilter<T> {
     /**
      * Creates specification from filter.
      */
-    protected abstract fun process(root: Root<T>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder): List<Predicate>
+    protected abstract fun process(root: Root<T>, query: CriteriaQuery<*>?, criteriaBuilder: CriteriaBuilder): List<Predicate>
 
     /**
      * Checks if filter is not empty.

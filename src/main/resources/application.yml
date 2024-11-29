@@ -1,21 +1,22 @@
 management:
   endpoint:
     env:
-      enabled: true
       show-values: always
+      access: unrestricted
     flyway:
-      enabled: true
+      access: unrestricted
     health:
-      enabled: true
+      access: unrestricted
       show-details: always
     info:
-      enabled: true
+      access: unrestricted
     loggers:
-      enabled: true
+      access: unrestricted
     metrics:
-      enabled: true
+      access: unrestricted
   endpoints:
-    enabled-by-default: false
+    access:
+      default: none
     web:
       base-path: /app
       exposure:
@@ -23,11 +24,6 @@ management:
   info:
     build:
       enabled: true
-    env:
-      enabled: true
-    git:
-      enabled: true
-      mode: full
     java:
       enabled: true
     os:
@@ -38,8 +34,8 @@ spring:
   datasource:
     name: Catalog
     url: jdbc:postgresql://localhost:5432/catalog
-    username: lavina
-    password: stargate
+    username: catalog
+    password: catalog
   jackson:
     default-property-inclusion: non_null
     serialization:

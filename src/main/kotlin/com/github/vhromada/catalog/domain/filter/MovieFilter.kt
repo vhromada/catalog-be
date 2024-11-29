@@ -31,7 +31,7 @@ data class MovieFilter(
     }
 
     @Suppress("DuplicatedCode")
-    override fun process(root: Root<Movie>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder): List<Predicate> {
+    override fun process(root: Root<Movie>, query: CriteriaQuery<*>?, criteriaBuilder: CriteriaBuilder): List<Predicate> {
         val result = mutableListOf<Predicate>()
         getPredicate(criteriaBuilder, root, "czechName", czechName, FieldOperation.LIKE)?.let { result.add(it) }
         getPredicate(criteriaBuilder, root, "originalName", originalName, FieldOperation.LIKE)?.let { result.add(it) }

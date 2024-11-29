@@ -35,7 +35,7 @@ data class AuthorFilter(
         return firstName.isNullOrBlank() && middleName.isNullOrBlank() && lastName.isNullOrBlank()
     }
 
-    override fun process(root: Root<Author>, query: CriteriaQuery<*>, criteriaBuilder: CriteriaBuilder): List<Predicate> {
+    override fun process(root: Root<Author>, query: CriteriaQuery<*>?, criteriaBuilder: CriteriaBuilder): List<Predicate> {
         val result = mutableListOf<Predicate>()
         getPredicate(criteriaBuilder, root, "firstName", firstName, FieldOperation.LIKE)?.let { result.add(it) }
         getPredicate(criteriaBuilder, root, "middleName", middleName, FieldOperation.LIKE)?.let { result.add(it) }

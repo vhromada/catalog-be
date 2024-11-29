@@ -53,6 +53,7 @@ class CatalogSecurityConfiguration {
                 .anyRequest().authenticated()
         }
         http.httpBasic {}
+        http.cors {}
         http.csrf { it.disable() }
         return http.build()
     }
