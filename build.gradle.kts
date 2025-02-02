@@ -5,9 +5,9 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    val kotlinVersion = "2.1.0"
-    id("org.springframework.boot") version "3.4.0"
-    id("io.spring.dependency-management") version "1.1.6"
+    val kotlinVersion = "2.1.10"
+    id("org.springframework.boot") version "3.4.2"
+    id("io.spring.dependency-management") version "1.1.7"
     id("com.adarshr.test-logger") version "4.0.0"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "24.2"
+version = "25.1"
 
 repositories {
     mavenCentral()
@@ -31,8 +31,8 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.hibernate.validator:hibernate-validator")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
-    implementation("io.github.oshai:kotlin-logging:7.0.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.4")
+    implementation("io.github.oshai:kotlin-logging:7.0.3")
     implementation("commons-io:commons-io:2.18.0")
     implementation("com.github.openjson:openjson:1.0.13")
     implementation("org.flywaydb:flyway-database-postgresql")
