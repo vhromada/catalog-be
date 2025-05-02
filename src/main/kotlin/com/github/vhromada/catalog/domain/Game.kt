@@ -107,7 +107,6 @@ data class Game(
     /**
      * True if there is editor
      */
-    @Column(name = "editor")
     var editor: Boolean,
 
     /**
