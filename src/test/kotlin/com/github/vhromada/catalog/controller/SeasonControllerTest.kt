@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.entity.filter.PagingFilter
 import com.github.vhromada.catalog.facade.SeasonFacade
 import com.github.vhromada.catalog.mapper.IssueMapper
@@ -18,7 +17,7 @@ import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf
@@ -30,6 +29,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import tools.jackson.databind.ObjectMapper
 
 /**
  * A class represents test for class [SeasonController].

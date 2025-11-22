@@ -12,7 +12,7 @@ data class IssueList(
     /**
      * Issues
      */
-    @JsonProperty("errors")
+    @field:JsonProperty("errors")
     val issues: List<Issue>
 
 )

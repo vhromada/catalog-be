@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog.common.auth
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.exception.InputException
 import com.github.vhromada.catalog.mapper.IssueMapper
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -12,6 +11,7 @@ import org.springframework.http.MediaType
 import org.springframework.web.filter.GenericFilterBean
 import org.springframework.web.util.ContentCachingResponseWrapper
 import org.springframework.web.util.WebUtils
+import tools.jackson.databind.ObjectMapper
 import java.nio.charset.StandardCharsets
 
 /**

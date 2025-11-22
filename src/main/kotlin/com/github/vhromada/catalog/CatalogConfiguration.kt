@@ -3,7 +3,7 @@ package com.github.vhromada.catalog
 import com.github.vhromada.catalog.common.auth.AuthContextHolder
 import com.github.vhromada.catalog.common.auth.Header
 import com.github.vhromada.catalog.provider.TimeProvider
-import org.springframework.boot.autoconfigure.domain.EntityScan
+import org.springframework.boot.persistence.autoconfigure.EntityScan
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration

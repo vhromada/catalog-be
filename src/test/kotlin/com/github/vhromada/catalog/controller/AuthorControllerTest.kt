@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.entity.AuthorStatistics
 import com.github.vhromada.catalog.entity.filter.AuthorFilter
 import com.github.vhromada.catalog.facade.AuthorFacade
@@ -17,7 +16,7 @@ import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf
@@ -29,6 +28,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import tools.jackson.databind.ObjectMapper
 
 /**
  * A class represents test for class [AuthorController].
@@ -99,9 +99,9 @@ class AuthorControllerTest {
         whenever(facade.search(filter = any())).thenReturn(authors)
 
         val requestBuilder = get("/rest/authors")
-            .queryParam("firstName", authorFilter.firstName)
-            .queryParam("middleName", authorFilter.middleName)
-            .queryParam("lastName", authorFilter.lastName)
+            .queryParam("firstName", authorFilter.firstName!!)
+            .queryParam("middleName", authorFilter.middleName!!)
+            .queryParam("lastName", authorFilter.lastName!!)
             .queryParam("page", PageUtils.PAGE.toString())
             .queryParam("limit", PageUtils.LIMIT.toString())
         mockMvc.perform(requestBuilder)

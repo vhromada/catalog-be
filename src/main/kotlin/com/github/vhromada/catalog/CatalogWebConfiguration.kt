@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.common.auth.AuthContextFilter
 import com.github.vhromada.catalog.common.log.LoggingFilter
 import com.github.vhromada.catalog.common.log.SensitiveLog
@@ -13,6 +12,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+import tools.jackson.databind.ObjectMapper
 
 /**
  * A class represents Spring configuration for web.
@@ -40,7 +40,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
     @Bean
     fun loggingFilter(): FilterRegistrationBean<LoggingFilter> {
         val filter = FilterRegistrationBean<LoggingFilter>()
-        filter.filter = LoggingFilter(sensitiveLog = SensitiveLog.of(rules = sensitiveLogRules))
+        filter.setFilter(LoggingFilter(sensitiveLog = SensitiveLog.of(rules = sensitiveLogRules)))
         filter.addUrlPatterns("/rest/*")
         filter.order = 1
         return filter
@@ -56,7 +56,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
     @Bean
     fun authContextFilter(objectMapper: ObjectMapper, issueMapper: IssueMapper): FilterRegistrationBean<AuthContextFilter> {
         val filter = FilterRegistrationBean<AuthContextFilter>()
-        filter.filter = AuthContextFilter(objectMapper = objectMapper, issueMapper = issueMapper)
+        filter.setFilter(AuthContextFilter(objectMapper = objectMapper, issueMapper = issueMapper))
         filter.addUrlPatterns("/*")
         filter.order = 2
         return filter
@@ -72,7 +72,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
         val info = Info()
             .title("Catalog")
             .description("Catalog of movies, shows, games, music, programs, books and jokes")
-            .version("25.2")
+            .version("25.3")
         return OpenAPI()
             .info(info)
     }

@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.PropertySource
 import org.springframework.data.domain.AuditorAware
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
 import java.time.LocalDateTime
 import java.util.Optional
 
@@ -84,13 +85,13 @@ class TestConfiguration {
     }
 
     /**
-     * Returns MVC handler mapping introspector.
+     * Returns CORS configuration source.
      *
-     * @return MVC handler mapping introspector.
+     * @return CORS configuration source
      */
     @Bean
-    fun mvcHandlerMappingIntrospector(): HandlerMappingIntrospector {
-        return HandlerMappingIntrospector()
+    fun corsConfigurationSource(): CorsConfigurationSource {
+        return CorsConfigurationSource { CorsConfiguration() }
     }
 
 }

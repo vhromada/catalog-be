@@ -5,8 +5,8 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    val kotlinVersion = "2.1.20"
-    id("org.springframework.boot") version "3.4.5"
+    val kotlinVersion = "2.2.21"
+    id("org.springframework.boot") version "4.0.0"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.adarshr.test-logger") version "4.0.0"
     kotlin("jvm") version kotlinVersion
@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "25.2"
+version = "25.3"
 
 repositories {
     mavenCentral()
@@ -25,28 +25,28 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-flyway")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.hibernate.validator:hibernate-validator")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6")
-    implementation("io.github.oshai:kotlin-logging:7.0.7")
-    implementation("commons-io:commons-io:2.19.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0")
+    implementation("io.github.oshai:kotlin-logging:7.0.13")
+    implementation("commons-io:commons-io:2.21.0")
     implementation("com.github.openjson:openjson:1.0.13")
     implementation("org.flywaydb:flyway-database-postgresql")
     runtimeOnly("org.postgresql:postgresql")
-    testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-    }
+    testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-flyway-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-security-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
-    testImplementation("org.springframework.security:spring-security-test")
     testImplementation(kotlin("test-junit5"))
-    testImplementation("org.testcontainers:junit-jupiter")
-    testImplementation("org.testcontainers:postgresql")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter")
+    testImplementation("org.testcontainers:testcontainers-postgresql")
     testImplementation("org.mockito:mockito-junit-jupiter")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:6.1.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

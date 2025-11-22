@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.common.result.Result
 import com.github.vhromada.catalog.common.result.Severity
 import com.github.vhromada.catalog.common.result.Status
@@ -21,7 +20,7 @@ import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.security.test.context.support.WithMockUser
@@ -34,6 +33,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multi
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.header
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import tools.jackson.databind.ObjectMapper
 
 /**
  * A class represents test for class [PictureController].
@@ -184,7 +184,7 @@ class PictureControllerTest {
             .file("file", ByteArray(0))
             .with(csrf())
         mockMvc.perform(requestBuilder)
-            .andExpect(status().isUnprocessableEntity())
+            .andExpect(status().isUnprocessableContent())
             .andExpect { assertThat(it.resolvedException).isInstanceOf(InputException::class.java) }
             .andExpect { assertThat(it.resolvedException?.message).contains("File mustn't be empty.") }
 

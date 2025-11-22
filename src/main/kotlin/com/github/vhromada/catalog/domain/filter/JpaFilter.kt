@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus
  * @param T type of data
  * @author Vladimir Hromada
  */
-abstract class JpaFilter<T> {
+abstract class JpaFilter<T : Any> {
 
     /**
      * Converts filter to specification.

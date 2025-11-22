@@ -1,6 +1,5 @@
 package com.github.vhromada.catalog.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.vhromada.catalog.entity.RegisterType
 import com.github.vhromada.catalog.mapper.IssueMapper
 import com.github.vhromada.catalog.service.RegisterService
@@ -13,13 +12,14 @@ import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import tools.jackson.databind.ObjectMapper
 
 /**
  * A class represents test for class [RegisterController].
