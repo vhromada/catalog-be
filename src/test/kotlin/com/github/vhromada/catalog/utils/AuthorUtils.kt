@@ -145,7 +145,7 @@ object AuthorUtils {
      * @return count of authors
      */
     fun getAuthorsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(a.id) FROM Author a", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(a.id) FROM Author a", Long::class.java).singleResult.toInt()
     }
 
     /**

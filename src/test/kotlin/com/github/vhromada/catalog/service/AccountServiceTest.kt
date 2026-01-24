@@ -124,7 +124,7 @@ class AccountServiceTest {
         val result = service.get(uuid = account.uuid!!)
 
         assertThat(result).isEqualTo(account)
-        verify(repository).findByUuid(uuid = account.uuid!!)
+        verify(repository).findByUuid(uuid = account.uuid)
         verifyNoMoreInteractions(repository)
     }
 

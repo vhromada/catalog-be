@@ -7,9 +7,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions.assertSoftly
 
 /**
- * Updates bookItem fields.
+ * Updates book item fields.
  *
- * @return updated bookItem
+ * @return updated book item
  */
 fun com.github.vhromada.catalog.domain.BookItem.updated(): com.github.vhromada.catalog.domain.BookItem {
     languages.clear()
@@ -20,9 +20,9 @@ fun com.github.vhromada.catalog.domain.BookItem.updated(): com.github.vhromada.c
 }
 
 /**
- * Updates bookItem fields.
+ * Updates book item fields.
  *
- * @return updated bookItem
+ * @return updated book item
  */
 fun BookItem.updated(): BookItem {
     return copy(
@@ -206,7 +206,7 @@ object BookItemUtils {
      * @return count of book items
      */
     fun getBookItemsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(b.id) FROM BookItem b", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(b.id) FROM BookItem b", Long::class.java).singleResult.toInt()
     }
 
     /**

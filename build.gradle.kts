@@ -5,8 +5,8 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    val kotlinVersion = "2.2.21"
-    id("org.springframework.boot") version "4.0.0"
+    val kotlinVersion = "2.3.0"
+    id("org.springframework.boot") version "4.0.2"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.adarshr.test-logger") version "4.0.0"
     kotlin("jvm") version kotlinVersion
@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "25.3"
+version = "26.1"
 
 repositories {
     mavenCentral()
@@ -30,8 +30,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0")
-    implementation("io.github.oshai:kotlin-logging:7.0.13")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
+    implementation("io.github.oshai:kotlin-logging:7.0.14")
     implementation("commons-io:commons-io:2.21.0")
     implementation("com.github.openjson:openjson:1.0.13")
     implementation("org.flywaydb:flyway-database-postgresql")
@@ -46,19 +46,19 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testImplementation("org.testcontainers:testcontainers-postgresql")
     testImplementation("org.mockito:mockito-junit-jupiter")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:6.1.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:6.2.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<JavaCompile> {
-    sourceCompatibility = "21"
-    targetCompatibility = "21"
+    sourceCompatibility = "25"
+    targetCompatibility = "25"
 }
 
 tasks.withType<KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
-        jvmTarget.set(JvmTarget.JVM_21)
+        jvmTarget.set(JvmTarget.JVM_25)
         incremental = false
     }
 }

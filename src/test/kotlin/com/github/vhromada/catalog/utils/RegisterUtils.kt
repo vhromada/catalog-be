@@ -132,7 +132,7 @@ object RegisterUtils {
      * @return count of registers
      */
     fun getRegistersCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(r.id) FROM Register r", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(r.id) FROM Register r", Long::class.java).singleResult.toInt()
     }
 
     /**
@@ -142,7 +142,7 @@ object RegisterUtils {
      * @return count of register's values
      */
     fun getRegisterValuesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(v.id) FROM RegisterValue v", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(v.id) FROM RegisterValue v", Long::class.java).singleResult.toInt()
     }
 
     /**

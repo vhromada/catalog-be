@@ -194,7 +194,7 @@ object BookUtils {
      * @return count of books
      */
     fun getBooksCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(b.id) FROM Book b", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(b.id) FROM Book b", Long::class.java).singleResult.toInt()
     }
 
     /**

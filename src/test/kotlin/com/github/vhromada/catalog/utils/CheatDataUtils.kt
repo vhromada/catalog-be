@@ -112,7 +112,7 @@ object CheatDataUtils {
      * @return count of cheat's data
      */
     fun getCheatDataCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(c.id) FROM CheatData c", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(c.id) FROM CheatData c", Long::class.java).singleResult.toInt()
     }
 
     /**

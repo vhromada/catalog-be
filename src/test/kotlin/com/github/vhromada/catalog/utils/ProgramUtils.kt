@@ -203,7 +203,7 @@ object ProgramUtils {
      * @return count of programs
      */
     fun getProgramsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(p.id) FROM Program p", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(p.id) FROM Program p", Long::class.java).singleResult.toInt()
     }
 
     /**
@@ -462,7 +462,7 @@ object ProgramUtils {
             if (expected.mediaCount == null) {
                 it.assertThat(actual.mediaCount).isZero
             } else {
-                it.assertThat(actual.mediaCount).isEqualTo(expected.mediaCount!!.toInt())
+                it.assertThat(actual.mediaCount).isEqualTo(expected.mediaCount.toInt())
             }
         }
     }

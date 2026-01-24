@@ -216,7 +216,7 @@ object ShowUtils {
      * @return count of shows
      */
     fun getShowsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(s.id) FROM Show s", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(s.id) FROM Show s", Long::class.java).singleResult.toInt()
     }
 
     /**

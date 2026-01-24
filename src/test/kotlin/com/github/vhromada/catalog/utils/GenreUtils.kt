@@ -131,7 +131,7 @@ object GenreUtils {
      * @return count of genres
      */
     fun getGenresCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(g.id) FROM Genre g", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(g.id) FROM Genre g", Long::class.java).singleResult.toInt()
     }
 
     /**

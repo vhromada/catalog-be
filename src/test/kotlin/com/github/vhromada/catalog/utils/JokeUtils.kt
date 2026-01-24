@@ -126,7 +126,7 @@ object JokeUtils {
      * @return count of jokes
      */
     fun getJokesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(j.id) FROM Joke j", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(j.id) FROM Joke j", Long::class.java).singleResult.toInt()
     }
 
     /**

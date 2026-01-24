@@ -39,8 +39,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
      */
     @Bean
     fun loggingFilter(): FilterRegistrationBean<LoggingFilter> {
-        val filter = FilterRegistrationBean<LoggingFilter>()
-        filter.setFilter(LoggingFilter(sensitiveLog = SensitiveLog.of(rules = sensitiveLogRules)))
+        val filter = FilterRegistrationBean(LoggingFilter(sensitiveLog = SensitiveLog.of(rules = sensitiveLogRules)))
         filter.addUrlPatterns("/rest/*")
         filter.order = 1
         return filter
@@ -55,8 +54,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
      */
     @Bean
     fun authContextFilter(objectMapper: ObjectMapper, issueMapper: IssueMapper): FilterRegistrationBean<AuthContextFilter> {
-        val filter = FilterRegistrationBean<AuthContextFilter>()
-        filter.setFilter(AuthContextFilter(objectMapper = objectMapper, issueMapper = issueMapper))
+        val filter = FilterRegistrationBean(AuthContextFilter(objectMapper = objectMapper, issueMapper = issueMapper))
         filter.addUrlPatterns("/*")
         filter.order = 2
         return filter
@@ -72,7 +70,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
         val info = Info()
             .title("Catalog")
             .description("Catalog of movies, shows, games, music, programs, books and jokes")
-            .version("25.3")
+            .version("26.1")
         return OpenAPI()
             .info(info)
     }

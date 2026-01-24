@@ -204,7 +204,7 @@ object AccountUtils {
      * @return count of accounts
      */
     fun getAccountsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(a.id) FROM Account a", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(a.id) FROM Account a", Long::class.java).singleResult.toInt()
     }
 
     /**

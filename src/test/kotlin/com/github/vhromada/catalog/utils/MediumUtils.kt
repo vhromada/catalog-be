@@ -65,7 +65,7 @@ object MediumUtils {
      * @return count of media
      */
     fun getMediaCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(m.id) FROM Medium m", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(m.id) FROM Medium m", Long::class.java).singleResult.toInt()
     }
 
     /**

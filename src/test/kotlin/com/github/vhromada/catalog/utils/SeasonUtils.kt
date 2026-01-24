@@ -232,7 +232,7 @@ object SeasonUtils {
      * @return count of seasons
      */
     fun getSeasonsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(s.id) FROM Season s", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(s.id) FROM Season s", Long::class.java).singleResult.toInt()
     }
 
     /**

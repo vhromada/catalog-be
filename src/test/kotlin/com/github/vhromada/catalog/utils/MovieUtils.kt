@@ -310,7 +310,7 @@ object MovieUtils {
      * @return count of movies
      */
     fun getMoviesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(m.id) FROM Movie m", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(m.id) FROM Movie m", Long::class.java).singleResult.toInt()
     }
 
     /**

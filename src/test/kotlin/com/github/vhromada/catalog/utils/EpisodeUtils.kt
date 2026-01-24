@@ -210,7 +210,7 @@ object EpisodeUtils {
      * @return count of episodes
      */
     fun getEpisodesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(e.id) FROM Episode e", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(e.id) FROM Episode e", Long::class.java).singleResult.toInt()
     }
 
     /**

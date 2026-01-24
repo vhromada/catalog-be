@@ -72,7 +72,7 @@ object RoleUtils {
      * @return count of roles
      */
     fun getRolesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(r.id) FROM Role r", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(r.id) FROM Role r", Long::class.java).singleResult.toInt()
     }
 
     /**

@@ -222,7 +222,7 @@ object GameUtils {
      * @return count of games
      */
     fun getGamesCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(g.id) FROM Game g", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(g.id) FROM Game g", Long::class.java).singleResult.toInt()
     }
 
     /**
@@ -529,7 +529,7 @@ object GameUtils {
             if (expected.mediaCount == null) {
                 it.assertThat(actual.mediaCount).isZero
             } else {
-                it.assertThat(actual.mediaCount).isEqualTo(expected.mediaCount!!.toInt())
+                it.assertThat(actual.mediaCount).isEqualTo(expected.mediaCount.toInt())
             }
         }
     }

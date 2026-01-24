@@ -178,7 +178,7 @@ object SongUtils {
      * @return count of songs
      */
     fun getSongsCount(entityManager: EntityManager): Int {
-        return entityManager.createQuery("SELECT COUNT(s.id) FROM Song s", java.lang.Long::class.java).singleResult.toInt()
+        return entityManager.createQuery("SELECT COUNT(s.id) FROM Song s", Long::class.java).singleResult.toInt()
     }
 
     /**
