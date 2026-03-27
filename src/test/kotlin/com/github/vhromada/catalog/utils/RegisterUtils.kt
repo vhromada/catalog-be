@@ -64,7 +64,7 @@ object RegisterUtils {
             id = index,
             number = index,
             name = name,
-            values = values
+            values = values.toMutableList()
         )
         register.values.forEach { it.register = register }
         return register

@@ -57,7 +57,7 @@ class ProgramController(
      * @return program
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Program {
+    fun get(@PathVariable uuid: String): Program {
         return facade.get(uuid = uuid)
     }
 
@@ -103,7 +103,7 @@ class ProgramController(
      */
     @PutMapping("{uuid}")
     fun update(
-        @PathVariable("uuid") uuid: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeProgramRequest
     ): Program {
         return facade.update(uuid = uuid, request = request)
@@ -120,7 +120,7 @@ class ProgramController(
      */
     @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("uuid") uuid: String) {
+    fun remove(@PathVariable uuid: String) {
         facade.remove(uuid = uuid)
     }
 
@@ -136,7 +136,7 @@ class ProgramController(
      */
     @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("uuid") uuid: String): Program {
+    fun duplicate(@PathVariable uuid: String): Program {
         return facade.duplicate(uuid = uuid)
     }
 

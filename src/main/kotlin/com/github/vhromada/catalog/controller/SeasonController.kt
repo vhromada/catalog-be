@@ -47,7 +47,7 @@ class SeasonController(
      */
     @GetMapping
     fun search(
-        @PathVariable("showUuid") showUuid: String,
+        @PathVariable showUuid: String,
         filter: PagingFilter
     ): Page<Season> {
         return facade.findAll(show = showUuid, filter = filter)
@@ -67,8 +67,8 @@ class SeasonController(
      */
     @GetMapping("{seasonUuid}")
     fun get(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String
     ): Season {
         return facade.get(show = showUuid, uuid = seasonUuid)
     }
@@ -97,7 +97,7 @@ class SeasonController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(
-        @PathVariable("showUuid") showUuid: String,
+        @PathVariable showUuid: String,
         @RequestBody request: ChangeSeasonRequest
     ): Season {
         return facade.add(show = showUuid, request = request)
@@ -128,8 +128,8 @@ class SeasonController(
      */
     @PutMapping("{seasonUuid}")
     fun update(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
         @RequestBody request: ChangeSeasonRequest
     ): Season {
         return facade.update(show = showUuid, uuid = seasonUuid, request = request)
@@ -149,8 +149,8 @@ class SeasonController(
     @DeleteMapping("{seasonUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String
     ) {
         facade.remove(show = showUuid, uuid = seasonUuid)
     }
@@ -170,8 +170,8 @@ class SeasonController(
     @PostMapping("{seasonUuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
     fun duplicate(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String
     ): Season {
         return facade.duplicate(show = showUuid, uuid = seasonUuid)
     }

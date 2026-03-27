@@ -43,7 +43,7 @@ class CheatController(
      * @return cheat for game's UUID
      */
     @GetMapping
-    fun find(@PathVariable("gameUuid") gameUuid: String): Cheat {
+    fun find(@PathVariable gameUuid: String): Cheat {
         return facade.find(game = gameUuid)
     }
 
@@ -61,8 +61,8 @@ class CheatController(
      */
     @GetMapping("{cheatUuid}")
     fun get(
-        @PathVariable("gameUuid") gameUuid: String,
-        @PathVariable("cheatUuid") cheatUuid: String
+        @PathVariable gameUuid: String,
+        @PathVariable cheatUuid: String
     ): Cheat {
         return facade.get(game = gameUuid, uuid = cheatUuid)
     }
@@ -89,7 +89,7 @@ class CheatController(
     @ResponseStatus(HttpStatus.CREATED)
     @Suppress("GrazieInspection")
     fun add(
-        @PathVariable("gameUuid") gameUuid: String,
+        @PathVariable gameUuid: String,
         @RequestBody request: ChangeCheatRequest
     ): Cheat {
         return facade.add(game = gameUuid, request = request)
@@ -116,8 +116,8 @@ class CheatController(
      */
     @PutMapping("{cheatUuid}")
     fun update(
-        @PathVariable("gameUuid") gameUuid: String,
-        @PathVariable("cheatUuid") cheatUuid: String,
+        @PathVariable gameUuid: String,
+        @PathVariable cheatUuid: String,
         @RequestBody request: ChangeCheatRequest
     ): Cheat {
         return facade.update(game = gameUuid, uuid = cheatUuid, request = request)
@@ -137,8 +137,8 @@ class CheatController(
     @DeleteMapping("{cheatUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(
-        @PathVariable("gameUuid") gameUuid: String,
-        @PathVariable("cheatUuid") cheatUuid: String
+        @PathVariable gameUuid: String,
+        @PathVariable cheatUuid: String
     ) {
         facade.remove(game = gameUuid, uuid = cheatUuid)
     }

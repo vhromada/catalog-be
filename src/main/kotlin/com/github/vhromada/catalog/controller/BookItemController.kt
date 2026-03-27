@@ -47,7 +47,7 @@ class BookItemController(
      */
     @GetMapping
     fun search(
-        @PathVariable("bookUuid") bookUuid: String,
+        @PathVariable bookUuid: String,
         filter: PagingFilter
     ): Page<BookItem> {
         return facade.findAll(book = bookUuid, filter = filter)
@@ -67,8 +67,8 @@ class BookItemController(
      */
     @GetMapping("{bookItemUuid}")
     fun get(
-        @PathVariable("bookUuid") bookUuid: String,
-        @PathVariable("bookItemUuid") bookItemUuid: String
+        @PathVariable bookUuid: String,
+        @PathVariable bookItemUuid: String
     ): BookItem {
         return facade.get(book = bookUuid, uuid = bookItemUuid)
     }
@@ -91,7 +91,7 @@ class BookItemController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(
-        @PathVariable("bookUuid") bookUuid: String,
+        @PathVariable bookUuid: String,
         @RequestBody request: ChangeBookItemRequest
     ): BookItem {
         return facade.add(book = bookUuid, request = request)
@@ -116,8 +116,8 @@ class BookItemController(
      */
     @PutMapping("{bookItemUuid}")
     fun update(
-        @PathVariable("bookUuid") bookUuid: String,
-        @PathVariable("bookItemUuid") bookItemUuid: String,
+        @PathVariable bookUuid: String,
+        @PathVariable bookItemUuid: String,
         @RequestBody request: ChangeBookItemRequest
     ): BookItem {
         return facade.update(book = bookUuid, uuid = bookItemUuid, request = request)
@@ -137,8 +137,8 @@ class BookItemController(
     @DeleteMapping("{bookItemUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(
-        @PathVariable("bookUuid") bookUuid: String,
-        @PathVariable("bookItemUuid") bookItemUuid: String
+        @PathVariable bookUuid: String,
+        @PathVariable bookItemUuid: String
     ) {
         facade.remove(book = bookUuid, uuid = bookItemUuid)
     }
@@ -158,8 +158,8 @@ class BookItemController(
     @PostMapping("{bookItemUuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
     fun duplicate(
-        @PathVariable("bookUuid") bookUuid: String,
-        @PathVariable("bookItemUuid") bookItemUuid: String
+        @PathVariable bookUuid: String,
+        @PathVariable bookItemUuid: String
     ): BookItem {
         return facade.duplicate(book = bookUuid, uuid = bookItemUuid)
     }

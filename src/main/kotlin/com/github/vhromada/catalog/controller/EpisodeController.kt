@@ -49,8 +49,8 @@ class EpisodeController(
      */
     @GetMapping
     fun search(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
         filter: PagingFilter
     ): Page<Episode> {
         return facade.findAll(show = showUuid, season = seasonUuid, filter = filter)
@@ -72,9 +72,9 @@ class EpisodeController(
      */
     @GetMapping("{episodeUuid}")
     fun get(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
-        @PathVariable("episodeUuid") episodeUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
+        @PathVariable episodeUuid: String
     ): Episode {
         return facade.get(show = showUuid, season = seasonUuid, uuid = episodeUuid)
     }
@@ -101,8 +101,8 @@ class EpisodeController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
         @RequestBody request: ChangeEpisodeRequest
     ): Episode {
         return facade.add(show = showUuid, season = seasonUuid, request = request)
@@ -131,9 +131,9 @@ class EpisodeController(
      */
     @PutMapping("{episodeUuid}")
     fun update(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
-        @PathVariable("episodeUuid") episodeUuid: String,
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
+        @PathVariable episodeUuid: String,
         @RequestBody request: ChangeEpisodeRequest
     ): Episode {
         return facade.update(show = showUuid, season = seasonUuid, uuid = episodeUuid, request = request)
@@ -155,9 +155,9 @@ class EpisodeController(
     @DeleteMapping("{episodeUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
-        @PathVariable("episodeUuid") episodeUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
+        @PathVariable episodeUuid: String
     ) {
         facade.remove(show = showUuid, season = seasonUuid, uuid = episodeUuid)
     }
@@ -179,9 +179,9 @@ class EpisodeController(
     @PostMapping("{episodeUuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
     fun duplicate(
-        @PathVariable("showUuid") showUuid: String,
-        @PathVariable("seasonUuid") seasonUuid: String,
-        @PathVariable("episodeUuid") episodeUuid: String
+        @PathVariable showUuid: String,
+        @PathVariable seasonUuid: String,
+        @PathVariable episodeUuid: String
     ): Episode {
         return facade.duplicate(show = showUuid, season = seasonUuid, uuid = episodeUuid)
     }

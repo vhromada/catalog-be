@@ -53,12 +53,12 @@ class MusicController(
      *
      *  * Music doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return music
      */
-    @GetMapping("{id}")
-    fun get(@PathVariable("id") id: String): Music {
-        return facade.get(uuid = id)
+    @GetMapping("{uuid}")
+    fun get(@PathVariable uuid: String): Music {
+        return facade.get(uuid = uuid)
     }
 
     /**
@@ -91,16 +91,16 @@ class MusicController(
      *  * Count of media isn't positive number
      *  * Music doesn't exist in data storage
      *
-     * @param id      ID
+     * @param uuid    UUID
      * @param request request for changing music
      * @return updated music
      */
-    @PutMapping("{id}")
+    @PutMapping("{uuid}")
     fun update(
-        @PathVariable("id") id: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeMusicRequest
     ): Music {
-        return facade.update(uuid = id, request = request)
+        return facade.update(uuid = uuid, request = request)
     }
 
     /**
@@ -110,12 +110,12 @@ class MusicController(
      *
      *  * Music doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("id") id: String) {
-        facade.remove(uuid = id)
+    fun remove(@PathVariable uuid: String) {
+        facade.remove(uuid = uuid)
     }
 
     /**
@@ -125,13 +125,13 @@ class MusicController(
      *
      *  * Music doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return duplicated music
      */
-    @PostMapping("{id}/duplicate")
+    @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("id") id: String): Music {
-        return facade.duplicate(uuid = id)
+    fun duplicate(@PathVariable uuid: String): Music {
+        return facade.duplicate(uuid = uuid)
     }
 
     /**

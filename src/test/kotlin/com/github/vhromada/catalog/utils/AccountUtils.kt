@@ -118,7 +118,7 @@ object AccountUtils {
             id = 1,
             uuid = "dc0d73bc-e19e-4c91-b818-192907def7ec",
             username = "admin",
-            password = "\$2a\$10\$CKwbyaXtgmTIFJj07XGPPOR3Qn8zCNUHN97/C9tm1oEGv.hJNEJU.",
+            password = $$"$2a$10$CKwbyaXtgmTIFJj07XGPPOR3Qn8zCNUHN97/C9tm1oEGv.hJNEJU.",
             locked = false,
             roles = mutableListOf(RoleUtils.getDomainRole(index = 1))
         )

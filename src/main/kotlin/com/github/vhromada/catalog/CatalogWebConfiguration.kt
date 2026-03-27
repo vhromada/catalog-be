@@ -25,7 +25,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
     /**
      * Sensitive log rules
      */
-    @Value("\${log.payload.sensitive}")
+    @Value($$"${log.payload.sensitive}")
     private lateinit var sensitiveLogRules: String
 
     override fun addCorsMappings(registry: CorsRegistry) {
@@ -70,7 +70,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
         val info = Info()
             .title("Catalog")
             .description("Catalog of movies, shows, games, music, programs, books and jokes")
-            .version("26.1")
+            .version("26.2")
         return OpenAPI()
             .info(info)
     }

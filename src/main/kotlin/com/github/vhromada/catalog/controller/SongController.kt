@@ -47,7 +47,7 @@ class SongController(
      */
     @GetMapping
     fun search(
-        @PathVariable("musicUuid") musicUuid: String,
+        @PathVariable musicUuid: String,
         filter: PagingFilter
     ): Page<Song> {
         return facade.findAll(music = musicUuid, filter = filter)
@@ -67,8 +67,8 @@ class SongController(
      */
     @GetMapping("{songUuid}")
     fun get(
-        @PathVariable("musicUuid") musicUuid: String,
-        @PathVariable("songUuid") songUuid: String
+        @PathVariable musicUuid: String,
+        @PathVariable songUuid: String
     ): Song {
         return facade.get(music = musicUuid, uuid = songUuid)
     }
@@ -91,7 +91,7 @@ class SongController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun add(
-        @PathVariable("musicUuid") musicUuid: String,
+        @PathVariable musicUuid: String,
         @RequestBody request: ChangeSongRequest
     ): Song {
         return facade.add(music = musicUuid, request = request)
@@ -116,8 +116,8 @@ class SongController(
      */
     @PutMapping("{songUuid}")
     fun update(
-        @PathVariable("musicUuid") musicUuid: String,
-        @PathVariable("songUuid") songUuid: String,
+        @PathVariable musicUuid: String,
+        @PathVariable songUuid: String,
         @RequestBody request: ChangeSongRequest
     ): Song {
         return facade.update(music = musicUuid, uuid = songUuid, request = request)
@@ -137,8 +137,8 @@ class SongController(
     @DeleteMapping("{songUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(
-        @PathVariable("musicUuid") musicUuid: String,
-        @PathVariable("songUuid") songUuid: String
+        @PathVariable musicUuid: String,
+        @PathVariable songUuid: String
     ) {
         facade.remove(music = musicUuid, uuid = songUuid)
     }
@@ -158,8 +158,8 @@ class SongController(
     @PostMapping("{songUuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
     fun duplicate(
-        @PathVariable("musicUuid") musicUuid: String,
-        @PathVariable("songUuid") songUuid: String
+        @PathVariable musicUuid: String,
+        @PathVariable songUuid: String
     ): Song {
         return facade.duplicate(music = musicUuid, uuid = songUuid)
     }

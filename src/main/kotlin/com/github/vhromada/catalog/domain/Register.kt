@@ -50,6 +50,6 @@ data class Register(
     @OneToMany(mappedBy = "register", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     @OrderBy("order")
     @Fetch(FetchMode.SELECT)
-    val values: List<RegisterValue>
+    val values: MutableList<RegisterValue>
 
 )

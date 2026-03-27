@@ -23,8 +23,7 @@ data class ChangePictureRequest(
         return if (other !is Picture) {
             false
         } else {
-            //TODO vhromada 07.04.2024: content.contentEquals(other.content)
-            true
+            content.contentEquals(other.content)
         }
     }
 

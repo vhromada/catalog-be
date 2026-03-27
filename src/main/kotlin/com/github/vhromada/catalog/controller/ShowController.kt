@@ -53,12 +53,12 @@ class ShowController(
      *
      *  * Show doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return show
      */
-    @GetMapping("{id}")
-    fun get(@PathVariable("id") id: String): Show {
-        return facade.get(uuid = id)
+    @GetMapping("{uuid}")
+    fun get(@PathVariable uuid: String): Show {
+        return facade.get(uuid = uuid)
     }
 
     /**
@@ -103,16 +103,16 @@ class ShowController(
      *  * Genre doesn't exist in data storage
      *  * Show doesn't exist in data storage
      *
-     * @param id      ID
+     * @param uuid    UUID
      * @param request request for changing show
      * @return updated show
      */
-    @PutMapping("{id}")
+    @PutMapping("{uuid}")
     fun update(
-        @PathVariable("id") id: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeShowRequest
     ): Show {
-        return facade.update(uuid = id, request = request)
+        return facade.update(uuid = uuid, request = request)
     }
 
     /**
@@ -122,12 +122,12 @@ class ShowController(
      *
      *  * Show doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("id") id: String) {
-        facade.remove(uuid = id)
+    fun remove(@PathVariable uuid: String) {
+        facade.remove(uuid = uuid)
     }
 
     /**
@@ -137,13 +137,13 @@ class ShowController(
      *
      *  * Show doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return duplicated show
      */
-    @PostMapping("{id}/duplicate")
+    @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("id") id: String): Show {
-        return facade.duplicate(uuid = id)
+    fun duplicate(@PathVariable uuid: String): Show {
+        return facade.duplicate(uuid = uuid)
     }
 
     /**

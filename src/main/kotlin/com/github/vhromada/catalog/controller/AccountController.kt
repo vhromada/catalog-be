@@ -58,7 +58,7 @@ class AccountController(
      * @return account
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Account {
+    fun get(@PathVariable uuid: String): Account {
         return facade.get(uuid = uuid)
     }
 
@@ -80,7 +80,7 @@ class AccountController(
      */
     @PutMapping("{uuid}/credentials")
     @ResponseStatus(HttpStatus.CREATED)
-    fun updateCredentials(@PathVariable("uuid") uuid: String, @RequestBody credentials: Credentials): Account {
+    fun updateCredentials(@PathVariable uuid: String, @RequestBody credentials: Credentials): Account {
         return facade.updateCredentials(uuid = uuid, credentials = credentials)
     }
 
@@ -101,7 +101,7 @@ class AccountController(
      * @throws InputException if request for changing roles isn't valid
      */
     @PutMapping("{uuid}/roles")
-    fun updateRoles(@PathVariable("uuid") uuid: String, @RequestBody request: ChangeRolesRequest): Account {
+    fun updateRoles(@PathVariable uuid: String, @RequestBody request: ChangeRolesRequest): Account {
         return facade.updateRoles(uuid = uuid, request = request)
     }
 

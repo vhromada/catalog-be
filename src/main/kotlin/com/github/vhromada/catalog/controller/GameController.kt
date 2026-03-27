@@ -57,7 +57,7 @@ class GameController(
      * @return game
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Game {
+    fun get(@PathVariable uuid: String): Game {
         return facade.get(uuid = uuid)
     }
 
@@ -113,7 +113,7 @@ class GameController(
      */
     @PutMapping("{uuid}")
     fun update(
-        @PathVariable("uuid") uuid: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeGameRequest
     ): Game {
         return facade.update(uuid = uuid, request = request)
@@ -130,7 +130,7 @@ class GameController(
      */
     @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("uuid") uuid: String) {
+    fun remove(@PathVariable uuid: String) {
         facade.remove(uuid = uuid)
     }
 
@@ -146,7 +146,7 @@ class GameController(
      */
     @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("uuid") uuid: String): Game {
+    fun duplicate(@PathVariable uuid: String): Game {
         return facade.duplicate(uuid = uuid)
     }
 

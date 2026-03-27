@@ -56,12 +56,12 @@ class PictureController(
      *
      *  * Picture doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return picture
      */
-    @GetMapping("{id}")
-    fun get(@PathVariable("id") id: String): ResponseEntity<Resource> {
-        val picture = facade.get(uuid = id)
+    @GetMapping("{uuid}")
+    fun get(@PathVariable uuid: String): ResponseEntity<Resource> {
+        val picture = facade.get(uuid = uuid)
         return ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"picture.jpg\"")
             .header(HttpHeaders.CONTENT_TYPE, "image/jpg")
@@ -93,12 +93,12 @@ class PictureController(
      *
      *  * Picture doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("id") id: String) {
-        facade.remove(uuid = id)
+    fun remove(@PathVariable uuid: String) {
+        facade.remove(uuid = uuid)
     }
 
 }

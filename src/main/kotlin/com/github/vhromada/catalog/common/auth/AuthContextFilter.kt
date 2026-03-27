@@ -55,7 +55,7 @@ class AuthContextFilter(
                 response.contentType = MediaType.APPLICATION_JSON_VALUE
                 response.characterEncoding = StandardCharsets.UTF_8.name()
                 response.status = exception.httpStatus.value()
-                response.getWriter().write(objectMapper.writeValueAsString(issueMapper.map(source = exception.result)))
+                response.writer.write(objectMapper.writeValueAsString(issueMapper.map(source = exception.result)))
             } else {
                 throw exception
             }

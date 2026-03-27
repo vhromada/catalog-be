@@ -57,7 +57,7 @@ class AuthorController(
      * @return author
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Author {
+    fun get(@PathVariable uuid: String): Author {
         return facade.get(uuid = uuid)
     }
 
@@ -97,7 +97,7 @@ class AuthorController(
      */
     @PutMapping("{uuid}")
     fun update(
-        @PathVariable("uuid") uuid: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeAuthorRequest
     ): Author {
         return facade.update(uuid = uuid, request = request)
@@ -114,7 +114,7 @@ class AuthorController(
      */
     @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("uuid") uuid: String) {
+    fun remove(@PathVariable uuid: String) {
         facade.remove(uuid = uuid)
     }
 
@@ -130,7 +130,7 @@ class AuthorController(
      */
     @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("uuid") uuid: String): Author {
+    fun duplicate(@PathVariable uuid: String): Author {
         return facade.duplicate(uuid = uuid)
     }
 

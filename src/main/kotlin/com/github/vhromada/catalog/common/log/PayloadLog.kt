@@ -43,7 +43,7 @@ class PayloadLog(
      */
     private fun format(source: String): String {
         if (!source.contains(Regex("[\\n\\r]"))) {
-            return source;
+            return source
         }
         return if (source.trim().startsWith("[")) {
             JSONArray(source).toString()
@@ -57,7 +57,7 @@ class PayloadLog(
         /**
          * Supported content types
          */
-        val SUPPORTED_CONTENT_TYPES = listOf("application/json");
+        val SUPPORTED_CONTENT_TYPES = listOf("application/json")
 
     }
 

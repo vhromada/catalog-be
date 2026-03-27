@@ -57,7 +57,7 @@ class GenreController(
      * @return genre
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Genre {
+    fun get(@PathVariable uuid: String): Genre {
         return facade.get(uuid = uuid)
     }
 
@@ -93,7 +93,7 @@ class GenreController(
      */
     @PutMapping("{uuid}")
     fun update(
-        @PathVariable("uuid") uuid: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeGenreRequest
     ): Genre {
         return facade.update(uuid = uuid, request = request)
@@ -110,7 +110,7 @@ class GenreController(
      */
     @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("uuid") uuid: String) {
+    fun remove(@PathVariable uuid: String) {
         facade.remove(uuid = uuid)
     }
 
@@ -126,7 +126,7 @@ class GenreController(
      */
     @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("uuid") uuid: String): Genre {
+    fun duplicate(@PathVariable uuid: String): Genre {
         return facade.duplicate(uuid = uuid)
     }
 

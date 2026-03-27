@@ -57,7 +57,7 @@ class JokeController(
      * @return joke
      */
     @GetMapping("{uuid}")
-    fun get(@PathVariable("uuid") uuid: String): Joke {
+    fun get(@PathVariable uuid: String): Joke {
         return facade.get(uuid = uuid)
     }
 
@@ -93,7 +93,7 @@ class JokeController(
      */
     @PutMapping("{uuid}")
     fun update(
-        @PathVariable("uuid") uuid: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeJokeRequest
     ): Joke {
         return facade.update(uuid = uuid, request = request)
@@ -110,7 +110,7 @@ class JokeController(
      */
     @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("uuid") uuid: String) {
+    fun remove(@PathVariable uuid: String) {
         facade.remove(uuid = uuid)
     }
 

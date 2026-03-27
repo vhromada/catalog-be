@@ -59,7 +59,7 @@ data class Account(
     @JoinTable(name = "account_roles", joinColumns = [JoinColumn(name = "account")], inverseJoinColumns = [JoinColumn(name = "role")])
     @OrderBy("id")
     @Fetch(FetchMode.SELECT)
-    val roles: MutableList<Role>? = null
+    var roles: MutableList<Role>? = null
 
 ) {
 
@@ -69,8 +69,7 @@ data class Account(
      * @param roleList roles
      */
     fun changeRoles(roleList: List<Role>) {
-        roles!!.clear()
-        roles.addAll(roleList)
+        roles = roleList.toMutableList()
     }
 
     /**

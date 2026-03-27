@@ -53,12 +53,12 @@ class MovieController(
      *
      *  * Movie doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return movie
      */
-    @GetMapping("{id}")
-    fun get(@PathVariable("id") id: String): Movie {
-        return facade.get(uuid = id)
+    @GetMapping("{uuid}")
+    fun get(@PathVariable uuid: String): Movie {
+        return facade.get(uuid = uuid)
     }
 
     /**
@@ -123,16 +123,16 @@ class MovieController(
      *  * Genre doesn't exist in data storage
      *  * Movie doesn't exist in data storage
      *
-     * @param id      ID
+     * @param uuid    UUID
      * @param request request for changing movie
      * @return updated movie
      */
-    @PutMapping("{id}")
+    @PutMapping("{uuid}")
     fun update(
-        @PathVariable("id") id: String,
+        @PathVariable uuid: String,
         @RequestBody request: ChangeMovieRequest
     ): Movie {
-        return facade.update(uuid = id, request = request)
+        return facade.update(uuid = uuid, request = request)
     }
 
     /**
@@ -142,12 +142,12 @@ class MovieController(
      *
      *  * Movie doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("{uuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun remove(@PathVariable("id") id: String) {
-        facade.remove(uuid = id)
+    fun remove(@PathVariable uuid: String) {
+        facade.remove(uuid = uuid)
     }
 
     /**
@@ -157,13 +157,13 @@ class MovieController(
      *
      *  * Movie doesn't exist in data storage
      *
-     * @param id ID
+     * @param uuid UUID
      * @return duplicated movie
      */
-    @PostMapping("{id}/duplicate")
+    @PostMapping("{uuid}/duplicate")
     @ResponseStatus(HttpStatus.CREATED)
-    fun duplicate(@PathVariable("id") id: String): Movie {
-        return facade.duplicate(uuid = id)
+    fun duplicate(@PathVariable uuid: String): Movie {
+        return facade.duplicate(uuid = uuid)
     }
 
     /**

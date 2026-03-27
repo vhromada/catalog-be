@@ -119,12 +119,13 @@ class AccountServiceTest {
     @Test
     fun get() {
         val account = AccountUtils.getDomainAccount(index = 1)
+        val uuid = account.uuid!!
         whenever(repository.findByUuid(uuid = any())).thenReturn(Optional.of(account))
 
-        val result = service.get(uuid = account.uuid!!)
+        val result = service.get(uuid = uuid)
 
         assertThat(result).isEqualTo(account)
-        verify(repository).findByUuid(uuid = account.uuid)
+        verify(repository).findByUuid(uuid = uuid)
         verifyNoMoreInteractions(repository)
     }
 
