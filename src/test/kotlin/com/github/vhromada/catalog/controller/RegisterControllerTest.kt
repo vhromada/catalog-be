@@ -1,12 +1,9 @@
 package com.github.vhromada.catalog.controller
 
-import com.github.vhromada.catalog.entity.RegisterType
+import com.github.vhromada.catalog.facade.RegisterFacade
 import com.github.vhromada.catalog.mapper.IssueMapper
-import com.github.vhromada.catalog.service.RegisterService
-import com.github.vhromada.catalog.utils.RegisterUtils
 import com.github.vhromada.catalog.utils.TestConstants
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.any
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
@@ -37,10 +34,10 @@ class RegisterControllerTest {
     private lateinit var mockMvc: MockMvc
 
     /**
-     * Instance of [RegisterService]
+     * Instance of [RegisterFacade]
      */
     @MockitoBean
-    private lateinit var service: RegisterService
+    private lateinit var facade: RegisterFacade
 
     /**
      * Instance of [IssueMapper]
@@ -59,16 +56,15 @@ class RegisterControllerTest {
      */
     @Test
     fun getProgramFormats() {
-        val register = RegisterUtils.getRegister(index = 1)
-        val response = register.values.map { it.code }
-        whenever(service.get(type = any())).thenReturn(register)
+        val response = listOf("ISO", "BINARY", "STEAM", "BATTLE_NET")
+        whenever(facade.getProgramFormats()).thenReturn(response)
 
         mockMvc.perform(get("/rest/registers/formats/programs"))
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(response)))
 
-        verify(service).get(RegisterType.PROGRAM_FORMATS)
-        verifyNoMoreInteractions(service)
+        verify(facade).getProgramFormats()
+        verifyNoMoreInteractions(facade)
         verifyNoInteractions(issueMapper)
     }
 
@@ -77,16 +73,15 @@ class RegisterControllerTest {
      */
     @Test
     fun getBookItemFormats() {
-        val register = RegisterUtils.getRegister(index = 1)
-        val response = register.values.map { it.code }
-        whenever(service.get(type = any())).thenReturn(register)
+        val response = listOf("PAPER", "PDF", "DOC", "TXT")
+        whenever(facade.getBookItemFormats()).thenReturn(response)
 
         mockMvc.perform(get("/rest/registers/formats/book-items"))
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(response)))
 
-        verify(service).get(RegisterType.BOOK_ITEM_FORMATS)
-        verifyNoMoreInteractions(service)
+        verify(facade).getBookItemFormats()
+        verifyNoMoreInteractions(facade)
         verifyNoInteractions(issueMapper)
     }
 
@@ -95,16 +90,15 @@ class RegisterControllerTest {
      */
     @Test
     fun getLanguages() {
-        val register = RegisterUtils.getRegister(index = 1)
-        val response = register.values.map { it.code }
-        whenever(service.get(type = any())).thenReturn(register)
+        val response = listOf("CZ", "EN", "FR", "JP", "SK")
+        whenever(facade.getLanguages()).thenReturn(response)
 
         mockMvc.perform(get("/rest/registers/languages"))
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(response)))
 
-        verify(service).get(RegisterType.LANGUAGES)
-        verifyNoMoreInteractions(service)
+        verify(facade).getLanguages()
+        verifyNoMoreInteractions(facade)
         verifyNoInteractions(issueMapper)
     }
 
@@ -113,16 +107,15 @@ class RegisterControllerTest {
      */
     @Test
     fun getSubtitles() {
-        val register = RegisterUtils.getRegister(index = 1)
-        val response = register.values.map { it.code }
-        whenever(service.get(type = any())).thenReturn(register)
+        val response = listOf("CZ", "EN")
+        whenever(facade.getSubtitles()).thenReturn(response)
 
         mockMvc.perform(get("/rest/registers/subtitles"))
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(response)))
 
-        verify(service).get(RegisterType.SUBTITLES)
-        verifyNoMoreInteractions(service)
+        verify(facade).getSubtitles()
+        verifyNoMoreInteractions(facade)
         verifyNoInteractions(issueMapper)
     }
 

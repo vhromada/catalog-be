@@ -91,7 +91,7 @@ class ShowMapperImpl(
             count = showsCount.toInt(),
             seasonsCount = seasonCount.toInt(),
             episodesCount = episodeStatistics.count.toInt(),
-            length = Time(length = if (episodeStatistics.length == null) 0 else episodeStatistics.length.toInt()).toString()
+            length = Time(length = episodeStatistics.length?.toInt() ?: 0).toString()
         )
     }
 

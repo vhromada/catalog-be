@@ -47,7 +47,7 @@ abstract class JpaFilter<T : Any> {
      */
     fun assertNotEmpty() {
         if (isEmpty()) {
-            throw InputException("EMPTY_FILTER", "Filter cannot be empty.", HttpStatus.UNPROCESSABLE_ENTITY)
+            throw InputException("EMPTY_FILTER", "Filter cannot be empty.", HttpStatus.UNPROCESSABLE_CONTENT)
         }
     }
 

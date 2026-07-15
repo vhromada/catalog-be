@@ -167,7 +167,7 @@ class JokeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("JOKE_CONTENT_NULL")
             .hasMessageContaining("Content mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(JokeUtils.getJokesCount(entityManager = entityManager)).isEqualTo(JokeUtils.JOKES_COUNT)
     }
@@ -184,7 +184,7 @@ class JokeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("JOKE_CONTENT_EMPTY")
             .hasMessageContaining("Content mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(JokeUtils.getJokesCount(entityManager = entityManager)).isEqualTo(JokeUtils.JOKES_COUNT)
     }
@@ -223,7 +223,7 @@ class JokeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("JOKE_CONTENT_NULL")
             .hasMessageContaining("Content mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(JokeUtils.getJokesCount(entityManager = entityManager)).isEqualTo(JokeUtils.JOKES_COUNT)
     }
@@ -240,7 +240,7 @@ class JokeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("JOKE_CONTENT_EMPTY")
             .hasMessageContaining("Content mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**

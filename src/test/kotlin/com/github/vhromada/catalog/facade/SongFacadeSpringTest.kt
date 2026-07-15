@@ -232,7 +232,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -252,7 +252,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -272,7 +272,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_LENGTH_NULL")
             .hasMessageContaining("Length of song mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -292,7 +292,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_LENGTH_NEGATIVE")
             .hasMessageContaining("Length of song mustn't be negative number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -355,7 +355,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -375,7 +375,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -390,7 +390,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_LENGTH_NULL")
             .hasMessageContaining("Length of song mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)
@@ -410,7 +410,7 @@ class SongFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SONG_LENGTH_NEGATIVE")
             .hasMessageContaining("Length of song mustn't be negative number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SongUtils.getSongsCount(entityManager = entityManager)).isEqualTo(SongUtils.SONGS_COUNT)

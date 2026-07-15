@@ -95,7 +95,7 @@ class AccountServiceTest {
 
         val result = service.find(filter = AccountUtils.newDomainFilter())
 
-        assertThat(result).isEqualTo(Optional.of(account))
+        assertThat(result).isEqualTo(account)
         verify(repository).findOne(any<Specification<Account>>())
         verifyNoMoreInteractions(repository)
     }
@@ -109,7 +109,7 @@ class AccountServiceTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EMPTY_FILTER")
             .hasMessageContaining("Filter cannot be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
         verifyNoInteractions(repository)
     }
 
@@ -185,7 +185,7 @@ class AccountServiceTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ACCOUNT_USERNAME_ALREADY_EXIST")
             .hasMessageContaining("Username already exists.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
         verify(repository).findByUsername(username = account.username!!)
         verifyNoMoreInteractions(repository)
     }

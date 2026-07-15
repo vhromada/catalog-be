@@ -191,7 +191,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -208,7 +208,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -225,7 +225,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_MEDIA_COUNT_NULL")
             .hasMessageContaining("Count of media mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -242,7 +242,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_MEDIA_COUNT_NOT_POSITIVE")
             .hasMessageContaining("Count of media must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -259,7 +259,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_FORMAT_NULL")
             .hasMessageContaining("Format mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -276,7 +276,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_CRACK_NULL")
             .hasMessageContaining("Crack mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -293,7 +293,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_SERIAL_KEY_NULL")
             .hasMessageContaining("Serial key mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -349,7 +349,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -366,7 +366,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -381,7 +381,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_MEDIA_COUNT_NULL")
             .hasMessageContaining("Count of media mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -398,7 +398,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_MEDIA_COUNT_NOT_POSITIVE")
             .hasMessageContaining("Count of media must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -415,7 +415,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_FORMAT_NULL")
             .hasMessageContaining("Format mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -432,7 +432,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_CRACK_NULL")
             .hasMessageContaining("Crack mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }
@@ -449,7 +449,7 @@ class ProgramFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PROGRAM_SERIAL_KEY_NULL")
             .hasMessageContaining("Serial key mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(ProgramUtils.getProgramsCount(entityManager = entityManager)).isEqualTo(ProgramUtils.PROGRAMS_COUNT)
     }

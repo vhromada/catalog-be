@@ -108,7 +108,7 @@ class ShowFacadeImpl(
      * @returns picture
      */
     private fun getPicture(show: com.github.vhromada.catalog.domain.Show): com.github.vhromada.catalog.domain.Picture? {
-        return if (show.picture == null) null else pictureService.getById(id = show.picture!!)
+        return show.picture?.let { pictureService.getById(id = it) }
     }
 
     /**
@@ -119,7 +119,7 @@ class ShowFacadeImpl(
      * @throws InputException if picture doesn't exist in data storage
      */
     private fun getPicture(request: ChangeShowRequest): com.github.vhromada.catalog.domain.Picture? {
-        return if (request.picture == null) null else pictureService.getByUuid(uuid = request.picture)
+        return request.picture?.let { pictureService.getByUuid(uuid = it) }
     }
 
     /**

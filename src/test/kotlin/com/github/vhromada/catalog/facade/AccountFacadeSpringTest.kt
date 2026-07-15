@@ -257,7 +257,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_NULL")
             .hasMessageContaining("Username mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -277,7 +277,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_EMPTY")
             .hasMessageContaining("Username mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -297,7 +297,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_NULL")
             .hasMessageContaining("Password mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -317,7 +317,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_EMPTY")
             .hasMessageContaining("Password mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -337,7 +337,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ACCOUNT_USERNAME_ALREADY_EXIST")
             .hasMessageContaining("Username already exists.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -397,7 +397,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_NULL")
             .hasMessageContaining("Roles mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -417,7 +417,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_EMPTY")
             .hasMessageContaining("Roles mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -437,7 +437,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_CONTAIN_NULL")
             .hasMessageContaining("Roles mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -535,7 +535,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_NULL")
             .hasMessageContaining("Username mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -555,7 +555,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_EMPTY")
             .hasMessageContaining("Username mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -575,7 +575,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_NULL")
             .hasMessageContaining("Password mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -595,7 +595,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_EMPTY")
             .hasMessageContaining("Password mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -615,7 +615,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ACCOUNT_USERNAME_ALREADY_EXIST")
             .hasMessageContaining("Username already exists.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -650,7 +650,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_NULL")
             .hasMessageContaining("Username mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -670,7 +670,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_EMPTY")
             .hasMessageContaining("Username mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -690,7 +690,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_NULL")
             .hasMessageContaining("Password mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -710,7 +710,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_EMPTY")
             .hasMessageContaining("Password mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -730,7 +730,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("INVALID_CREDENTIALS")
             .hasMessageContaining("Credentials aren't valid.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)
@@ -750,7 +750,7 @@ class AccountFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("INVALID_CREDENTIALS")
             .hasMessageContaining("Credentials aren't valid.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(AccountUtils.getAccountsCount(entityManager = entityManager)).isEqualTo(AccountUtils.ACCOUNTS_COUNT)

@@ -145,7 +145,7 @@ data class Game(
         patch = game.patch
         trainer = game.trainer
         trainerData = game.trainerData
-        editor = game.serialKey
+        editor = game.editor
         saves = game.saves
         otherData = game.otherData
         note = game.note

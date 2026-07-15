@@ -168,7 +168,7 @@ class PictureFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_NULL")
             .hasMessageContaining("Content mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(PictureUtils.getPicturesCount(entityManager = entityManager)).isEqualTo(PictureUtils.PICTURES_COUNT)
     }
@@ -185,7 +185,7 @@ class PictureFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_EMPTY")
             .hasMessageContaining("Content mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(PictureUtils.getPicturesCount(entityManager = entityManager)).isEqualTo(PictureUtils.PICTURES_COUNT)
     }
@@ -224,7 +224,7 @@ class PictureFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_NULL")
             .hasMessageContaining("Content mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertThat(PictureUtils.getPicturesCount(entityManager = entityManager)).isEqualTo(PictureUtils.PICTURES_COUNT)
     }
@@ -241,7 +241,7 @@ class PictureFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_EMPTY")
             .hasMessageContaining("Content mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**

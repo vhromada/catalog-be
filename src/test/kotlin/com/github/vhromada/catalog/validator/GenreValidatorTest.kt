@@ -48,7 +48,7 @@ class GenreValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GENRE_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class GenreValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GENRE_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

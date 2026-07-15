@@ -85,7 +85,7 @@ class GameMapperImpl(
     override fun mapStatistics(source: GameStatistics): com.github.vhromada.catalog.entity.GameStatistics {
         return com.github.vhromada.catalog.entity.GameStatistics(
             count = source.count.toInt(),
-            mediaCount = if (source.mediaCount == null) 0 else source.mediaCount.toInt()
+            mediaCount = source.mediaCount?.toInt() ?: 0
         )
     }
 

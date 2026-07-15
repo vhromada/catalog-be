@@ -1,7 +1,6 @@
 package com.github.vhromada.catalog.controller
 
-import com.github.vhromada.catalog.entity.RegisterType
-import com.github.vhromada.catalog.service.RegisterService
+import com.github.vhromada.catalog.facade.RegisterFacade
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController
 class RegisterController(
 
     /**
-     * Service for registers
+     * Facade for registers
      */
-    private val service: RegisterService
+    private val facade: RegisterFacade
 
 ) {
 
@@ -31,7 +30,7 @@ class RegisterController(
      */
     @GetMapping("formats/programs")
     fun getProgramFormats(): List<String> {
-        return getValues(type = RegisterType.PROGRAM_FORMATS)
+        return facade.getProgramFormats()
     }
 
     /**
@@ -41,7 +40,7 @@ class RegisterController(
      */
     @GetMapping("formats/book-items")
     fun getBookItemFormats(): List<String> {
-        return getValues(type = RegisterType.BOOK_ITEM_FORMATS)
+        return facade.getBookItemFormats()
     }
 
     /**
@@ -51,7 +50,7 @@ class RegisterController(
      */
     @GetMapping("languages")
     fun getLanguages(): List<String> {
-        return getValues(type = RegisterType.LANGUAGES)
+        return facade.getLanguages()
     }
 
     /**
@@ -61,17 +60,7 @@ class RegisterController(
      */
     @GetMapping("subtitles")
     fun getSubtitles(): List<String> {
-        return getValues(type = RegisterType.SUBTITLES)
-    }
-
-    /**
-     * Returns register's values.
-     *
-     * @param type type of register
-     * @return register's values
-     */
-    private fun getValues(type: RegisterType): List<String> {
-        return service.get(type = type).values.map { it.code }
+        return facade.getSubtitles()
     }
 
 }

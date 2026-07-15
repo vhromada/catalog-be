@@ -100,7 +100,7 @@ class MovieMapperImpl(
         return MovieStatistics(
             count = count.toInt(),
             mediaCount = mediaStatistics.count.toInt(),
-            length = Time(length = if (mediaStatistics.length == null) 0 else mediaStatistics.length.toInt()).toString()
+            length = Time(length = mediaStatistics.length?.toInt() ?: 0).toString()
         )
     }
 

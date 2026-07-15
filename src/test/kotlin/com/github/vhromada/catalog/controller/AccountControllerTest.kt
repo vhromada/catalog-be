@@ -151,7 +151,7 @@ class AccountControllerTest {
             .contentType(MediaType.APPLICATION_JSON)
             .with(csrf())
         mockMvc.perform(requestBuilder)
-            .andExpect(status().isCreated())
+            .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(account)))
 
         verify(facade).updateCredentials(uuid = account.uuid, credentials = credentials)

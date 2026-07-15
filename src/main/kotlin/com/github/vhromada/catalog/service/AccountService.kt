@@ -5,7 +5,6 @@ import com.github.vhromada.catalog.domain.filter.AccountFilter
 import com.github.vhromada.catalog.exception.InputException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import java.util.Optional
 
 /**
  * An interface represents service for accounts.
@@ -30,7 +29,7 @@ interface AccountService {
      * @return account for filter
      * @throws InputException if filter is empty
      */
-    fun find(filter: AccountFilter): Optional<Account>
+    fun find(filter: AccountFilter): Account?
 
     /**
      * Returns account.

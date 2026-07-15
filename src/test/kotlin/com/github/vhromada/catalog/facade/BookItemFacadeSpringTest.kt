@@ -239,7 +239,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_LANGUAGES_NULL")
             .hasMessageContaining("Languages mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(BookItemUtils.getBookItemsCount(entityManager = entityManager)).isEqualTo(BookItemUtils.BOOK_ITEMS_COUNT)
@@ -259,7 +259,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_LANGUAGES_CONTAIN_NULL")
             .hasMessageContaining("Languages mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(BookItemUtils.getBookItemsCount(entityManager = entityManager)).isEqualTo(BookItemUtils.BOOK_ITEMS_COUNT)
@@ -279,7 +279,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_FORMAT_NULL")
             .hasMessageContaining("Format mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(BookItemUtils.getBookItemsCount(entityManager = entityManager)).isEqualTo(BookItemUtils.BOOK_ITEMS_COUNT)
@@ -363,7 +363,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_LANGUAGES_NULL")
             .hasMessageContaining("Languages mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(BookItemUtils.getBookItemsCount(entityManager = entityManager)).isEqualTo(BookItemUtils.BOOK_ITEMS_COUNT)
@@ -383,7 +383,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_LANGUAGES_CONTAIN_NULL")
             .hasMessageContaining("Languages mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -398,7 +398,7 @@ class BookItemFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ITEM_FORMAT_NULL")
             .hasMessageContaining("Format mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(BookItemUtils.getBookItemsCount(entityManager = entityManager)).isEqualTo(BookItemUtils.BOOK_ITEMS_COUNT)

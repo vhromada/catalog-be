@@ -48,7 +48,7 @@ class PictureValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_NULL")
             .hasMessageContaining("Content mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class PictureValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("PICTURE_CONTENT_EMPTY")
             .hasMessageContaining("Content mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

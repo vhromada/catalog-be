@@ -296,7 +296,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NUMBER_NULL")
             .hasMessageContaining("Number of episode mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -317,7 +317,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NUMBER_NOT_POSITIVE")
             .hasMessageContaining("Number of episode must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -338,7 +338,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -359,7 +359,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -380,7 +380,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_LENGTH_NULL")
             .hasMessageContaining("Length of episode mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -401,7 +401,7 @@ class EpisodeFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_LENGTH_NEGATIVE")
             .hasMessageContaining("Length of episode mustn't be negative number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -492,7 +492,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NUMBER_NULL")
             .hasMessageContaining("Number of episode mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -519,7 +519,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NUMBER_NOT_POSITIVE")
             .hasMessageContaining("Number of episode must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -546,7 +546,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -573,7 +573,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -594,7 +594,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_LENGTH_NULL")
             .hasMessageContaining("Length of episode mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)
@@ -621,7 +621,7 @@ class EpisodeFacadeSpringTest {
         }.isInstanceOf(InputException::class.java)
             .hasMessageContaining("EPISODE_LENGTH_NEGATIVE")
             .hasMessageContaining("Length of episode mustn't be negative number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(EpisodeUtils.getEpisodesCount(entityManager = entityManager)).isEqualTo(EpisodeUtils.EPISODES_COUNT)

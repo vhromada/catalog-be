@@ -49,7 +49,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_NULL")
             .hasMessageContaining("Cheat's data mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -64,7 +64,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_CONTAIN_NULL")
             .hasMessageContaining("Cheat's data mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -81,7 +81,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_ACTION_NULL")
             .hasMessageContaining("Cheat's data action mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -98,7 +98,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_ACTION_EMPTY")
             .hasMessageContaining("Cheat's data action mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -115,7 +115,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_DESCRIPTION_NULL")
             .hasMessageContaining("Cheat's data description mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -132,7 +132,7 @@ class CheatValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CHEAT_DATA_DESCRIPTION_EMPTY")
             .hasMessageContaining("Cheat's data description mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

@@ -19,7 +19,7 @@ class InputException(
     /**
      * HTTPS status code
      */
-    val httpStatus: HttpStatusCode = HttpStatus.UNPROCESSABLE_ENTITY
+    val httpStatus: HttpStatusCode = HttpStatus.UNPROCESSABLE_CONTENT
 
 ) : RuntimeException(result.toString()) {
 
@@ -30,6 +30,6 @@ class InputException(
      * @param message    message
      * @param httpStatus HTTP status
      */
-    constructor(key: String, message: String, httpStatus: HttpStatus = HttpStatus.UNPROCESSABLE_ENTITY) : this(Result.error<Unit>(key = key, message = message), httpStatus)
+    constructor(key: String, message: String, httpStatus: HttpStatus = HttpStatus.UNPROCESSABLE_CONTENT) : this(Result.error<Unit>(key = key, message = message), httpStatus)
 
 }

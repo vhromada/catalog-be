@@ -109,9 +109,9 @@ class CheatController(
      *  * Game doesn't exist in data storage
      *  * Cheat doesn't exist in data storage
      *
-     * @param gameUuid game's UUID
-     * @param gameUuid cheat's UUID
-     * @param request  request for changing game
+     * @param gameUuid  game's UUID
+     * @param cheatUuid cheat's UUID
+     * @param request   request for changing game
      * @return updated cheat
      */
     @PutMapping("{cheatUuid}")
@@ -132,7 +132,7 @@ class CheatController(
      *  * Cheat doesn't exist in data storage
      *
      * @param gameUuid game's UUID
-     * @param gameUuid cheat's UUID
+     * @param cheatUuid cheat's UUID
      */
     @DeleteMapping("{cheatUuid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

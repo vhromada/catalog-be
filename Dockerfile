@@ -2,7 +2,7 @@ FROM eclipse-temurin:25 as builder
 COPY build/libs/*.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
 
-FROM eclipse-temurin:25
+FROM eclipse-temurin:25-jre
 COPY --from=builder dependencies/ ./
 COPY --from=builder spring-boot-loader/ ./
 COPY --from=builder snapshot-dependencies/ ./

@@ -48,7 +48,7 @@ class AccountValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_NULL")
             .hasMessageContaining("Username mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class AccountValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_USERNAME_EMPTY")
             .hasMessageContaining("Username mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class AccountValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_NULL")
             .hasMessageContaining("Password mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -93,7 +93,7 @@ class AccountValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("CREDENTIALS_PASSWORD_EMPTY")
             .hasMessageContaining("Password mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

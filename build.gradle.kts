@@ -1,12 +1,11 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    val kotlinVersion = "2.3.20"
-    id("org.springframework.boot") version "4.0.5"
+    val kotlinVersion = "2.4.10"
+    id("org.springframework.boot") version "4.1.0"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.adarshr.test-logger") version "4.0.0"
     kotlin("jvm") version kotlinVersion
@@ -16,7 +15,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "26.2"
+version = "26.3"
 
 repositories {
     mavenCentral()
@@ -30,9 +29,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2")
-    implementation("io.github.oshai:kotlin-logging:8.0.01")
-    implementation("commons-io:commons-io:2.21.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3")
+    implementation("io.github.oshai:kotlin-logging:8.0.4")
+    implementation("commons-io:commons-io:2.22.0")
     implementation("com.github.openjson:openjson:1.0.13")
     implementation("org.flywaydb:flyway-database-postgresql")
     runtimeOnly("org.postgresql:postgresql")
@@ -50,16 +49,13 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.withType<JavaCompile> {
-    sourceCompatibility = "25"
-    targetCompatibility = "25"
+kotlin {
+    jvmToolchain(25)
 }
 
 tasks.withType<KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
-        jvmTarget.set(JvmTarget.JVM_25)
-        incremental = false
     }
 }
 

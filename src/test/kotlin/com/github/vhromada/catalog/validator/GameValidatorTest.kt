@@ -48,7 +48,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_MEDIA_COUNT_NULL")
             .hasMessageContaining("Count of media mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -93,7 +93,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_MEDIA_COUNT_NOT_POSITIVE")
             .hasMessageContaining("Count of media must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -108,7 +108,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_FORMAT_NULL")
             .hasMessageContaining("Format mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -123,7 +123,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_CRACK_NULL")
             .hasMessageContaining("Crack mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -138,7 +138,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_SERIAL_KEY_NULL")
             .hasMessageContaining("Serial key mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -153,7 +153,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_PATCH_NULL")
             .hasMessageContaining("Patch mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -168,7 +168,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_TRAINER_NULL")
             .hasMessageContaining("Trainer mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -183,7 +183,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_TRAINER_DATA_NULL")
             .hasMessageContaining("Data for trainer mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -198,7 +198,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_EDITOR_NULL")
             .hasMessageContaining("Editor mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -213,7 +213,7 @@ class GameValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("GAME_SAVES_NULL")
             .hasMessageContaining("Saves mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

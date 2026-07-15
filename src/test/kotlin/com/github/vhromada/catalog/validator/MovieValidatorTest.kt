@@ -49,7 +49,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_CZECH_NAME_NULL")
             .hasMessageContaining("Czech name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -64,7 +64,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_CZECH_NAME_EMPTY")
             .hasMessageContaining("Czech name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -79,7 +79,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_ORIGINAL_NAME_NULL")
             .hasMessageContaining("Original name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -94,7 +94,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_ORIGINAL_NAME_EMPTY")
             .hasMessageContaining("Original name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -109,7 +109,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_YEAR_NULL")
             .hasMessageContaining("Year mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -123,7 +123,7 @@ class MovieValidatorTest {
         assertThatThrownBy { validator.validateRequest(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_MOVIE_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -137,7 +137,7 @@ class MovieValidatorTest {
         assertThatThrownBy { validator.validateRequest(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_MOVIE_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -152,7 +152,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_LANGUAGES_NULL")
             .hasMessageContaining("Languages mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -167,7 +167,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_LANGUAGES_EMPTY")
             .hasMessageContaining("Languages mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -182,7 +182,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_LANGUAGES_CONTAIN_NULL")
             .hasMessageContaining("Languages mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -197,7 +197,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_SUBTITLES_NULL")
             .hasMessageContaining("Subtitles mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -212,7 +212,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_SUBTITLES_CONTAIN_NULL")
             .hasMessageContaining("Subtitles mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -227,7 +227,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_MEDIA_NULL")
             .hasMessageContaining("Media mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -242,7 +242,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_MEDIA_CONTAIN_NULL")
             .hasMessageContaining("Media mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -257,7 +257,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_MEDIUM_NOT_POSITIVE")
             .hasMessageContaining("Medium must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -271,7 +271,7 @@ class MovieValidatorTest {
         assertThatThrownBy { validator.validateRequest(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_MOVIE_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -285,7 +285,7 @@ class MovieValidatorTest {
         assertThatThrownBy { validator.validateRequest(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_MOVIE_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -300,7 +300,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_GENRES_NULL")
             .hasMessageContaining("Genres mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -315,7 +315,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_GENRES_CONTAIN_NULL")
             .hasMessageContaining("Genres mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -330,7 +330,7 @@ class MovieValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MOVIE_GENRE_EMPTY")
             .hasMessageContaining("Genre mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

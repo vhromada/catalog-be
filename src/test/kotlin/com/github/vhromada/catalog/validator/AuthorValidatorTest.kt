@@ -48,7 +48,7 @@ class AuthorValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("AUTHOR_FIRST_NAME_NULL")
             .hasMessageContaining("First name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class AuthorValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("AUTHOR_FIRST_NAME_EMPTY")
             .hasMessageContaining("First name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class AuthorValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("AUTHOR_LAST_NAME_NULL")
             .hasMessageContaining("Last name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -93,7 +93,7 @@ class AuthorValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("AUTHOR_LAST_NAME_EMPTY")
             .hasMessageContaining("Last name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

@@ -241,7 +241,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_NUMBER_NULL")
             .hasMessageContaining("Number of season mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -262,7 +262,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_NUMBER_NOT_POSITIVE")
             .hasMessageContaining("Number of season must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -283,7 +283,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_START_YEAR_NULL")
             .hasMessageContaining("Starting year mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -304,7 +304,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_END_YEAR_NULL")
             .hasMessageContaining("Ending year mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -325,7 +325,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_STARTING_YEAR_EVENT.toString())
             .hasMessageContaining(TestConstants.INVALID_ENDING_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -346,7 +346,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_STARTING_YEAR_EVENT.toString())
             .hasMessageContaining(TestConstants.INVALID_ENDING_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -367,7 +367,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_YEARS_NOT_VALID")
             .hasMessageContaining("Starting year mustn't be greater than ending year.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -388,7 +388,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_LANGUAGE_NULL")
             .hasMessageContaining("Language mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -409,7 +409,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_SUBTITLES_NULL")
             .hasMessageContaining("Subtitles mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -430,7 +430,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_SUBTITLES_CONTAIN_NULL")
             .hasMessageContaining("Subtitles mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -538,7 +538,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_NUMBER_NULL")
             .hasMessageContaining("Number of season mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -559,7 +559,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_NUMBER_NOT_POSITIVE")
             .hasMessageContaining("Number of season must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -580,7 +580,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_START_YEAR_NULL")
             .hasMessageContaining("Starting year mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -601,7 +601,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_END_YEAR_NULL")
             .hasMessageContaining("Ending year mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -622,7 +622,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_STARTING_YEAR_EVENT.toString())
             .hasMessageContaining(TestConstants.INVALID_ENDING_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -643,7 +643,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_STARTING_YEAR_EVENT.toString())
             .hasMessageContaining(TestConstants.INVALID_ENDING_YEAR_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -664,7 +664,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_YEARS_NOT_VALID")
             .hasMessageContaining("Starting year mustn't be greater than ending year.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -685,7 +685,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_LANGUAGE_NULL")
             .hasMessageContaining("Language mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -706,7 +706,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_SUBTITLES_NULL")
             .hasMessageContaining("Subtitles mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)
@@ -727,7 +727,7 @@ class SeasonFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SEASON_SUBTITLES_CONTAIN_NULL")
             .hasMessageContaining("Subtitles mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(SeasonUtils.getSeasonsCount(entityManager = entityManager)).isEqualTo(SeasonUtils.SEASONS_COUNT)

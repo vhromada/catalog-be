@@ -48,7 +48,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_CZECH_NAME_NULL")
             .hasMessageContaining("Czech name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_CZECH_NAME_EMPTY")
             .hasMessageContaining("Czech name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ORIGINAL_NAME_NULL")
             .hasMessageContaining("Original name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -93,7 +93,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_ORIGINAL_NAME_EMPTY")
             .hasMessageContaining("Original name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -108,7 +108,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_DESCRIPTION_NULL")
             .hasMessageContaining("Description mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -123,7 +123,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_DESCRIPTION_EMPTY")
             .hasMessageContaining("Description mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -138,7 +138,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_AUTHORS_NULL")
             .hasMessageContaining("Authors mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -153,7 +153,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_AUTHORS_CONTAIN_NULL")
             .hasMessageContaining("Authors mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -168,7 +168,7 @@ class BookValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("BOOK_AUTHOR_EMPTY")
             .hasMessageContaining("Author mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

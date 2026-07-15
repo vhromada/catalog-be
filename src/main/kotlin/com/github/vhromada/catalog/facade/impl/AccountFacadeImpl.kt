@@ -99,7 +99,7 @@ class AccountFacadeImpl(
     override fun checkCredentials(credentials: Credentials): Account {
         accountValidator.validateCredentials(credentials = credentials)
         val account = accountService.find(filter = com.github.vhromada.catalog.domain.filter.AccountFilter(username = credentials.username))
-            .orElseThrow { InputException(key = "INVALID_CREDENTIALS", message = "Credentials aren't valid.") }
+            ?: throw InputException(key = "INVALID_CREDENTIALS", message = "Credentials aren't valid.")
         val valid = encoder.matches(credentials.password, account.password)
         if (!valid) {
             throw InputException(key = "INVALID_CREDENTIALS", message = "Credentials aren't valid.")

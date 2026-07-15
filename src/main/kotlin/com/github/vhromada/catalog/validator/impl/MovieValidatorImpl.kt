@@ -7,6 +7,7 @@ import com.github.vhromada.catalog.entity.io.ChangeMovieRequest
 import com.github.vhromada.catalog.exception.InputException
 import com.github.vhromada.catalog.utils.Constants
 import com.github.vhromada.catalog.validator.MovieValidator
+import com.github.vhromada.catalog.validator.utils.ValidationSupport
 import org.springframework.stereotype.Component
 
 /**
@@ -19,7 +20,7 @@ class MovieValidatorImpl : MovieValidator {
 
     override fun validateRequest(request: ChangeMovieRequest) {
         val result = Result<Unit>()
-        validateNames(request = request, result = result)
+        ValidationSupport.validateNames(czechName = request.czechName, originalName = request.originalName, prefix = "MOVIE_", result = result)
         when {
             request.year == null -> {
                 result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_YEAR_NULL", message = "Year mustn't be null."))
@@ -34,43 +35,16 @@ class MovieValidatorImpl : MovieValidator {
         if (request.imdbCode != null && (request.imdbCode < 1 || request.imdbCode > Constants.MAX_IMDB_CODE)) {
             result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_IMDB_CODE_NOT_VALID", message = "IMDB code must be between 1 and 999999999."))
         }
-        validateGenres(request = request, result = result)
+        ValidationSupport.validateItems(
+            items = request.genres,
+            collectionKey = "MOVIE_GENRES",
+            itemKey = "MOVIE_GENRE",
+            collectionLabel = "Genres",
+            itemLabel = "Genre",
+            result = result
+        )
         if (result.isError()) {
             throw InputException(result = result)
-        }
-    }
-
-    /**
-     * Validates names.
-     * <br></br>
-     * Validation errors:
-     *
-     *  * Czech name is null
-     *  * Czech name is empty string
-     *  * Original name is null
-     *  * Original name is empty string
-     *
-     * @param request request for changing movie
-     * @param result  result with validation errors
-     */
-    private fun validateNames(request: ChangeMovieRequest, result: Result<Unit>) {
-        when {
-            request.czechName == null -> {
-                result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_CZECH_NAME_NULL", message = "Czech name mustn't be null."))
-            }
-
-            request.czechName.isBlank() -> {
-                result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_CZECH_NAME_EMPTY", message = "Czech name mustn't be empty string."))
-            }
-        }
-        when {
-            request.originalName == null -> {
-                result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_ORIGINAL_NAME_NULL", message = "Original name mustn't be null."))
-            }
-
-            request.originalName.isBlank() -> {
-                result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_ORIGINAL_NAME_EMPTY", message = "Original name mustn't be empty string."))
-            }
         }
     }
 
@@ -132,36 +106,9 @@ class MovieValidatorImpl : MovieValidator {
             if (request.media.contains(null)) {
                 result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_MEDIA_CONTAIN_NULL", message = "Media mustn't contain null value."))
             }
-            for (medium in request.media) {
-                if (medium != null && medium <= 0) {
+            request.media.filterNotNull().forEach { medium ->
+                if (medium <= 0) {
                     result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_MEDIUM_NOT_POSITIVE", message = "Medium must be positive number."))
-                }
-            }
-        }
-    }
-
-    /**
-     * Validates genres.
-     * <br></br>
-     * Validation errors:
-     *
-     *  * Genres are null
-     *  * Genres contain null value
-     *  * Genre is empty string
-     *
-     * @param request request for changing movie
-     * @param result  result with validation errors
-     */
-    private fun validateGenres(request: ChangeMovieRequest, result: Result<Unit>) {
-        if (request.genres == null) {
-            result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_GENRES_NULL", message = "Genres mustn't be null."))
-        } else {
-            if (request.genres.contains(null)) {
-                result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_GENRES_CONTAIN_NULL", message = "Genres mustn't contain null value."))
-            }
-            for (genre in request.genres) {
-                if (genre != null && genre.isBlank()) {
-                    result.addEvent(event = Event(severity = Severity.ERROR, key = "MOVIE_GENRE_EMPTY", message = "Genre mustn't be empty string."))
                 }
             }
         }

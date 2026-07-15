@@ -234,7 +234,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_CZECH_NAME_NULL")
             .hasMessageContaining("Czech name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -257,7 +257,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_CZECH_NAME_EMPTY")
             .hasMessageContaining("Czech name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -280,7 +280,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_ORIGINAL_NAME_NULL")
             .hasMessageContaining("Original name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -303,7 +303,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_ORIGINAL_NAME_EMPTY")
             .hasMessageContaining("Original name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -325,7 +325,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.add(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -347,7 +347,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.add(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -369,7 +369,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.add(request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -392,7 +392,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRES_NULL")
             .hasMessageContaining("Genres mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -415,7 +415,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRES_CONTAIN_NULL")
             .hasMessageContaining("Genres mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -438,7 +438,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRE_EMPTY")
             .hasMessageContaining("Genre mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -538,7 +538,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_CZECH_NAME_NULL")
             .hasMessageContaining("Czech name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -561,7 +561,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_CZECH_NAME_EMPTY")
             .hasMessageContaining("Czech name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -584,7 +584,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_ORIGINAL_NAME_NULL")
             .hasMessageContaining("Original name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -607,7 +607,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_ORIGINAL_NAME_EMPTY")
             .hasMessageContaining("Original name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -629,7 +629,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.update(uuid = ShowUtils.getDomainShow(index = 1).uuid, request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -651,7 +651,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.update(uuid = ShowUtils.getDomainShow(index = 1).uuid, request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -673,7 +673,7 @@ class ShowFacadeSpringTest {
         assertThatThrownBy { facade.update(uuid = ShowUtils.getDomainShow(index = 1).uuid, request = request) }
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining(TestConstants.INVALID_SHOW_IMDB_CODE_EVENT.toString())
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -696,7 +696,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRES_NULL")
             .hasMessageContaining("Genres mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -719,7 +719,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRES_CONTAIN_NULL")
             .hasMessageContaining("Genres mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)
@@ -742,7 +742,7 @@ class ShowFacadeSpringTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("SHOW_GENRE_EMPTY")
             .hasMessageContaining("Genre mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
 
         assertSoftly {
             it.assertThat(ShowUtils.getShowsCount(entityManager = entityManager)).isEqualTo(ShowUtils.SHOWS_COUNT)

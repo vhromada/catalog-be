@@ -17,7 +17,6 @@ import com.github.vhromada.catalog.service.RegisterService
 import com.github.vhromada.catalog.validator.MovieValidator
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
-import kotlin.math.min
 
 /**
  * A class represents implementation of facade for movies.
@@ -126,7 +125,7 @@ class MovieFacadeImpl(
      * @returns picture
      */
     private fun getPicture(movie: com.github.vhromada.catalog.domain.Movie): com.github.vhromada.catalog.domain.Picture? {
-        return if (movie.picture == null) null else pictureService.getById(id = movie.picture!!)
+        return movie.picture?.let { pictureService.getById(id = it) }
     }
 
     /**
@@ -137,7 +136,7 @@ class MovieFacadeImpl(
      * @throws InputException if picture doesn't exist in data storage
      */
     private fun getPicture(request: ChangeMovieRequest): com.github.vhromada.catalog.domain.Picture? {
-        return if (request.picture == null) null else pictureService.getByUuid(uuid = request.picture)
+        return request.picture?.let { pictureService.getByUuid(uuid = it) }
     }
 
     /**
@@ -159,24 +158,12 @@ class MovieFacadeImpl(
      * @return updated media
      */
     private fun getUpdatedMedia(originalMedia: List<Medium>, updatedMedia: List<Int>): List<Medium> {
-        val result = mutableListOf<Medium>()
-
-        var index = 0
-        val max = min(originalMedia.size, updatedMedia.size)
-        while (index < max) {
-            val medium = originalMedia[index]
+        return updatedMedia.mapIndexed { index, length ->
+            val medium = originalMedia.getOrNull(index) ?: Medium(id = null, number = index + 1, length = length)
             medium.number = index + 1
-            medium.length = updatedMedia[index]
-            result.add(medium)
-            index++
+            medium.length = length
+            medium
         }
-        while (index < updatedMedia.size) {
-            val medium = Medium(id = null, number = index + 1, length = updatedMedia[index])
-            result.add(medium)
-            index++
-        }
-
-        return result
     }
 
 }

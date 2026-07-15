@@ -79,7 +79,6 @@ class AccountController(
      * @return updated account
      */
     @PutMapping("{uuid}/credentials")
-    @ResponseStatus(HttpStatus.CREATED)
     fun updateCredentials(@PathVariable uuid: String, @RequestBody credentials: Credentials): Account {
         return facade.updateCredentials(uuid = uuid, credentials = credentials)
     }

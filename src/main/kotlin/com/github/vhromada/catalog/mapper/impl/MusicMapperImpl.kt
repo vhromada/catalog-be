@@ -71,8 +71,8 @@ class MusicMapperImpl(
         return com.github.vhromada.catalog.entity.MusicStatistics(
             count = musicStatistics.count.toInt(),
             songsCount = songStatistics.count.toInt(),
-            mediaCount = if (musicStatistics.mediaCount == null) 0 else musicStatistics.mediaCount.toInt(),
-            length = Time(length = if (songStatistics.length == null) 0 else songStatistics.length.toInt()).toString()
+            mediaCount = musicStatistics.mediaCount?.toInt() ?: 0,
+            length = Time(length = songStatistics.length?.toInt() ?: 0).toString()
         )
     }
 

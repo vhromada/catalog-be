@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.util.Optional
 
 /**
  * A class represents implementation of service for accounts.
@@ -34,9 +33,9 @@ class AccountServiceImpl(
         return repository.findAll(filter.toSpecification(), pageable)
     }
 
-    override fun find(filter: AccountFilter): Optional<Account> {
+    override fun find(filter: AccountFilter): Account? {
         filter.assertNotEmpty()
-        return repository.findOne(filter.toSpecification())
+        return repository.findOne(filter.toSpecification()).orElse(null)
     }
 
     override fun get(uuid: String): Account {

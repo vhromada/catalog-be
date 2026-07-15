@@ -48,7 +48,7 @@ class RoleValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_NULL")
             .hasMessageContaining("Roles mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class RoleValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_EMPTY")
             .hasMessageContaining("Roles mustn't be empty.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class RoleValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("ROLE_ROLES_CONTAIN_NULL")
             .hasMessageContaining("Roles mustn't contain null value.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }

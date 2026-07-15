@@ -73,7 +73,7 @@ class ProgramMapperImpl(
     override fun mapStatistics(source: ProgramStatistics): com.github.vhromada.catalog.entity.ProgramStatistics {
         return com.github.vhromada.catalog.entity.ProgramStatistics(
             count = source.count.toInt(),
-            mediaCount = if (source.mediaCount == null) 0 else source.mediaCount.toInt()
+            mediaCount = source.mediaCount?.toInt() ?: 0
         )
     }
 

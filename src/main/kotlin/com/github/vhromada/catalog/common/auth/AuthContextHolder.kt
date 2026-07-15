@@ -27,10 +27,7 @@ object AuthContextHolder {
      * @return auth context
      */
     fun get(): AuthContext {
-        if (CONTEXT.get() == null) {
-            CONTEXT.set(AuthContext())
-        }
-        return CONTEXT.get()
+        return CONTEXT.get() ?: AuthContext().also { CONTEXT.set(it) }
     }
 
     /**

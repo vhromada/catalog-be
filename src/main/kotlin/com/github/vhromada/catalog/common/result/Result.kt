@@ -95,8 +95,11 @@ class Result<T> {
      * @return status for severity
      */
     private fun getStatus(severity: Severity): Status {
-        return Status.entries
-            .first { it.ordinal == severity.ordinal }
+        return when (severity) {
+            Severity.INFO -> Status.OK
+            Severity.WARN -> Status.WARN
+            Severity.ERROR -> Status.ERROR
+        }
     }
 
     override fun toString(): String {

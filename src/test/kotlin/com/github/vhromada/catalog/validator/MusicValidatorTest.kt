@@ -48,7 +48,7 @@ class MusicValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MUSIC_NAME_NULL")
             .hasMessageContaining("Name mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -63,7 +63,7 @@ class MusicValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MUSIC_NAME_EMPTY")
             .hasMessageContaining("Name mustn't be empty string.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -78,7 +78,7 @@ class MusicValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MUSIC_MEDIA_COUNT_NULL")
             .hasMessageContaining("Count of media mustn't be null.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
     /**
@@ -93,7 +93,7 @@ class MusicValidatorTest {
             .isInstanceOf(InputException::class.java)
             .hasMessageContaining("MUSIC_MEDIA_COUNT_NOT_POSITIVE")
             .hasMessageContaining("Count of media must be positive number.")
-            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_ENTITY)
+            .hasFieldOrPropertyWithValue("httpStatus", HttpStatus.UNPROCESSABLE_CONTENT)
     }
 
 }
