@@ -140,9 +140,12 @@ class SongServiceTest {
     fun remove() {
         val music = MusicUtils.getDomainMusic(index = 1)
         val song = music.songs.first()
+        whenever(musicRepository.findById(music.id!!)).thenReturn(Optional.of(music))
 
         service.remove(song = song)
 
+        assertThat(music.songs).doesNotContain(song)
+        verify(musicRepository).findById(music.id!!)
         verify(musicRepository).save(music)
         verifyNoMoreInteractions(musicRepository)
         verifyNoInteractions(songRepository, uuidProvider)
@@ -157,6 +160,9 @@ class SongServiceTest {
         val expectedSong = expectedMusic.songs.first()
             .copy(id = 0, uuid = TestConstants.UUID)
         expectedMusic.songs.add(expectedSong)
+        val music = MusicUtils.getDomainMusic(index = 1)
+        val song = music.songs.first()
+        whenever(musicRepository.findById(music.id!!)).thenReturn(Optional.of(music))
         val copyArgumentCaptor = argumentCaptor<Song>()
         whenever(songRepository.save(anyDomain())).thenAnswer {
             val argument = it.arguments[0] as Song
@@ -165,13 +171,13 @@ class SongServiceTest {
         }
         whenever(uuidProvider.getUuid()).thenReturn(TestConstants.UUID)
 
-        val result = service.duplicate(song = MusicUtils.getDomainMusic(index = 1).songs.first())
+        val result = service.duplicate(song = song)
 
         SongUtils.assertSongDeepEquals(expected = expectedSong, actual = result)
+        verify(musicRepository).findById(music.id!!)
         verify(songRepository).save(copyArgumentCaptor.capture())
         verify(uuidProvider).getUuid()
-        verifyNoMoreInteractions(songRepository, uuidProvider)
-        verifyNoInteractions(musicRepository)
+        verifyNoMoreInteractions(musicRepository, songRepository, uuidProvider)
         assertThat(result).isSameAs(copyArgumentCaptor.lastValue)
     }
 

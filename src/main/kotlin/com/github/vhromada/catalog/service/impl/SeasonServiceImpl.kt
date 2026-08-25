@@ -53,16 +53,17 @@ class SeasonServiceImpl(
 
     @Transactional
     override fun remove(season: Season) {
-        val show = season.show!!
-        show.seasons.remove(season)
+        val show = showRepository.findById(season.show!!.id!!).orElseThrow()
+        show.seasons.removeIf { it.id == season.id }
         showRepository.save(show)
     }
 
     @Transactional
     override fun duplicate(season: Season): Season {
-        val copy = season.copy(id = null, uuid = uuidProvider.getUuid(), subtitles = season.subtitles.map { it }.toMutableList(), episodes = mutableListOf())
+        val show = showRepository.findById(season.show!!.id!!).orElseThrow()
+        val copy = season.copy(id = null, uuid = uuidProvider.getUuid(), subtitles = season.subtitles.map { it }.toMutableList(), episodes = mutableListOf(), show = show)
         copy.episodes.addAll(season.episodes.map { it.copy(id = null, uuid = uuidProvider.getUuid(), season = copy) })
-        copy.show!!.seasons.add(copy)
+        show.seasons.add(copy)
         return seasonRepository.save(copy)
     }
 

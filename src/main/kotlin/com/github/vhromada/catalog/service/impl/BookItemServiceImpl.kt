@@ -53,15 +53,16 @@ class BookItemServiceImpl(
 
     @Transactional
     override fun remove(bookItem: BookItem) {
-        val book = bookItem.book!!
-        book.items.remove(bookItem)
+        val book = bookRepository.findById(bookItem.book!!.id!!).orElseThrow()
+        book.items.removeIf { it.id == bookItem.id }
         bookRepository.save(book)
     }
 
     @Transactional
     override fun duplicate(bookItem: BookItem): BookItem {
-        val copy = bookItem.copy(id = null, uuid = uuidProvider.getUuid(), languages = bookItem.languages.map { it }.toMutableList())
-        copy.book!!.items.add(copy)
+        val book = bookRepository.findById(bookItem.book!!.id!!).orElseThrow()
+        val copy = bookItem.copy(id = null, uuid = uuidProvider.getUuid(), languages = bookItem.languages.map { it }.toMutableList(), book = book)
+        book.items.add(copy)
         return bookItemRepository.save(copy)
     }
 

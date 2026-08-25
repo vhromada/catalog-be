@@ -1,10 +1,12 @@
-FROM eclipse-temurin:25 as builder
+FROM eclipse-temurin:25 AS builder
+WORKDIR /builder
 COPY build/libs/*.jar app.jar
-RUN java -Djarmode=layertools -jar app.jar extract
+RUN java -Djarmode=tools -jar app.jar extract --layers --launcher --destination extracted
 
 FROM eclipse-temurin:25-jre
-COPY --from=builder dependencies/ ./
-COPY --from=builder spring-boot-loader/ ./
-COPY --from=builder snapshot-dependencies/ ./
-COPY --from=builder application/ ./
+WORKDIR /application
+COPY --from=builder --chown=65534:65534 /builder/extracted/dependencies/ ./
+COPY --from=builder --chown=65534:65534 /builder/extracted/spring-boot-loader/ ./
+COPY --from=builder --chown=65534:65534 /builder/extracted/snapshot-dependencies/ ./
+COPY --from=builder --chown=65534:65534 /builder/extracted/application/ ./
 ENTRYPOINT ["java","org.springframework.boot.loader.launch.JarLauncher"]

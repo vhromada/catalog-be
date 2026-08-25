@@ -53,15 +53,16 @@ class SongServiceImpl(
 
     @Transactional
     override fun remove(song: Song) {
-        val music = song.music!!
-        music.songs.remove(song)
+        val music = musicRepository.findById(song.music!!.id!!).orElseThrow()
+        music.songs.removeIf { it.id == song.id }
         musicRepository.save(music)
     }
 
     @Transactional
     override fun duplicate(song: Song): Song {
-        val copy = song.copy(id = null, uuid = uuidProvider.getUuid())
-        copy.music!!.songs.add(copy)
+        val music = musicRepository.findById(song.music!!.id!!).orElseThrow()
+        val copy = song.copy(id = null, uuid = uuidProvider.getUuid(), music = music)
+        music.songs.add(copy)
         return songRepository.save(copy)
     }
 

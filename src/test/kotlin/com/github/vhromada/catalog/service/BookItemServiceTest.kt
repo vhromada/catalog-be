@@ -140,9 +140,12 @@ class BookItemServiceTest {
     fun remove() {
         val book = BookUtils.getDomainBook(index = 1)
         val bookItem = book.items.first()
+        whenever(bookRepository.findById(book.id!!)).thenReturn(Optional.of(book))
 
         service.remove(bookItem = bookItem)
 
+        assertThat(book.items).doesNotContain(bookItem)
+        verify(bookRepository).findById(book.id!!)
         verify(bookRepository).save(book)
         verifyNoMoreInteractions(bookRepository)
         verifyNoInteractions(bookItemRepository, uuidProvider)
@@ -157,6 +160,9 @@ class BookItemServiceTest {
         val expectedBookItem = expectedBook.items.first()
             .copy(id = 0, uuid = TestConstants.UUID)
         expectedBook.items.add(expectedBookItem)
+        val book = BookUtils.getDomainBook(index = 1)
+        val bookItem = book.items.first()
+        whenever(bookRepository.findById(book.id!!)).thenReturn(Optional.of(book))
         val copyArgumentCaptor = argumentCaptor<BookItem>()
         whenever(bookItemRepository.save(anyDomain())).thenAnswer {
             val argument = it.arguments[0] as BookItem
@@ -165,13 +171,13 @@ class BookItemServiceTest {
         }
         whenever(uuidProvider.getUuid()).thenReturn(TestConstants.UUID)
 
-        val result = service.duplicate(bookItem = BookUtils.getDomainBook(index = 1).items.first())
+        val result = service.duplicate(bookItem = bookItem)
 
         BookItemUtils.assertBookItemDeepEquals(expected = expectedBookItem, actual = result)
+        verify(bookRepository).findById(book.id!!)
         verify(bookItemRepository).save(copyArgumentCaptor.capture())
         verify(uuidProvider).getUuid()
-        verifyNoMoreInteractions(bookItemRepository, uuidProvider)
-        verifyNoInteractions(bookRepository)
+        verifyNoMoreInteractions(bookRepository, bookItemRepository, uuidProvider)
         assertThat(result).isSameAs(copyArgumentCaptor.lastValue)
     }
 

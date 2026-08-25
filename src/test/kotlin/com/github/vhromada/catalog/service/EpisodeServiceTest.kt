@@ -140,9 +140,12 @@ class EpisodeServiceTest {
     fun remove() {
         val season = ShowUtils.getDomainShow(index = 1).seasons.first()
         val episode = season.episodes.first()
+        whenever(seasonRepository.findById(season.id!!)).thenReturn(Optional.of(season))
 
         service.remove(episode = episode)
 
+        assertThat(season.episodes).doesNotContain(episode)
+        verify(seasonRepository).findById(season.id!!)
         verify(seasonRepository).save(season)
         verifyNoMoreInteractions(seasonRepository)
         verifyNoInteractions(episodeRepository, uuidProvider)
@@ -157,6 +160,9 @@ class EpisodeServiceTest {
         val expectedEpisode = expectedSeason.episodes.first()
             .copy(id = 0, uuid = TestConstants.UUID)
         expectedSeason.episodes.add(expectedEpisode)
+        val season = ShowUtils.getDomainShow(index = 1).seasons.first()
+        val episode = season.episodes.first()
+        whenever(seasonRepository.findById(season.id!!)).thenReturn(Optional.of(season))
         val copyArgumentCaptor = argumentCaptor<Episode>()
         whenever(episodeRepository.save(anyDomain())).thenAnswer {
             val argument = it.arguments[0] as Episode
@@ -165,13 +171,13 @@ class EpisodeServiceTest {
         }
         whenever(uuidProvider.getUuid()).thenReturn(TestConstants.UUID)
 
-        val result = service.duplicate(episode = ShowUtils.getDomainShow(index = 1).seasons.first().episodes.first())
+        val result = service.duplicate(episode = episode)
 
         EpisodeUtils.assertEpisodeDeepEquals(expected = expectedEpisode, actual = result)
+        verify(seasonRepository).findById(season.id!!)
         verify(episodeRepository).save(copyArgumentCaptor.capture())
         verify(uuidProvider).getUuid()
-        verifyNoMoreInteractions(episodeRepository, uuidProvider)
-        verifyNoInteractions(seasonRepository)
+        verifyNoMoreInteractions(seasonRepository, episodeRepository, uuidProvider)
         assertThat(result).isSameAs(copyArgumentCaptor.lastValue)
     }
 

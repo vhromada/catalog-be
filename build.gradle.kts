@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter
 
 plugins {
     val kotlinVersion = "2.4.10"
-    id("org.springframework.boot") version "4.1.0"
+    id("org.springframework.boot") version "4.1.1"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.adarshr.test-logger") version "4.0.0"
     kotlin("jvm") version kotlinVersion
@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "26.3"
+version = "26.4"
 
 repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0")
     implementation("io.github.oshai:kotlin-logging:8.0.4")
     implementation("commons-io:commons-io:2.22.0")
     implementation("com.github.openjson:openjson:1.0.13")

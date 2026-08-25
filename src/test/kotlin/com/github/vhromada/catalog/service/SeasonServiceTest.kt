@@ -1,8 +1,8 @@
 package com.github.vhromada.catalog.service
 
+import com.github.vhromada.catalog.domain.Season
 import com.github.vhromada.catalog.exception.InputException
 import com.github.vhromada.catalog.provider.UuidProvider
-import com.github.vhromada.catalog.domain.Season
 import com.github.vhromada.catalog.repository.SeasonRepository
 import com.github.vhromada.catalog.repository.ShowRepository
 import com.github.vhromada.catalog.service.impl.SeasonServiceImpl
@@ -142,9 +142,12 @@ class SeasonServiceTest {
     fun remove() {
         val show = ShowUtils.getDomainShow(index = 1)
         val season = show.seasons.first()
+        whenever(showRepository.findById(show.id!!)).thenReturn(Optional.of(show))
 
         service.remove(season = season)
 
+        assertThat(show.seasons).doesNotContain(season)
+        verify(showRepository).findById(show.id!!)
         verify(showRepository).save(show)
         verifyNoMoreInteractions(showRepository)
         verifyNoInteractions(seasonRepository, uuidProvider)
@@ -162,6 +165,9 @@ class SeasonServiceTest {
         val expectedEpisodes = expectedSeason.episodes.map { it.copy(id = null, uuid = TestConstants.UUID, season = expectedSeason) }
         expectedSeason.episodes.clear()
         expectedSeason.episodes.addAll(expectedEpisodes)
+        val show = ShowUtils.getDomainShow(index = 1)
+        val season = show.seasons.first()
+        whenever(showRepository.findById(show.id!!)).thenReturn(Optional.of(show))
         val copyArgumentCaptor = argumentCaptor<Season>()
         whenever(seasonRepository.save(anyDomain())).thenAnswer {
             val argument = it.arguments[0] as Season
@@ -170,13 +176,13 @@ class SeasonServiceTest {
         }
         whenever(uuidProvider.getUuid()).thenReturn(TestConstants.UUID)
 
-        val result = service.duplicate(season = ShowUtils.getDomainShow(index = 1).seasons.first())
+        val result = service.duplicate(season = season)
 
         SeasonUtils.assertSeasonDeepEquals(expected = expectedSeason, actual = result)
+        verify(showRepository).findById(show.id!!)
         verify(seasonRepository).save(copyArgumentCaptor.capture())
         verify(uuidProvider, times(EpisodeUtils.EPISODES_PER_SEASON_COUNT + 1)).getUuid()
-        verifyNoMoreInteractions(seasonRepository, uuidProvider)
-        verifyNoInteractions(showRepository)
+        verifyNoMoreInteractions(showRepository, seasonRepository, uuidProvider)
         assertThat(result).isSameAs(copyArgumentCaptor.lastValue)
     }
 
