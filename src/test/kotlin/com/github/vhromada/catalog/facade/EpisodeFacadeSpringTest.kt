@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -258,7 +257,6 @@ class EpisodeFacadeSpringTest {
      * Test method for [EpisodeFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val show = ShowUtils.getDomainShow(index = 1)
         val season = show.seasons.first()
@@ -450,7 +448,6 @@ class EpisodeFacadeSpringTest {
      * Test method for [EpisodeFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val show = ShowUtils.getDomainShow(index = 1)
         val season = show.seasons.first()
@@ -790,7 +787,6 @@ class EpisodeFacadeSpringTest {
      * Test method for [EpisodeFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val show = ShowUtils.getDomainShow(index = 1)
         val season = show.seasons.first()

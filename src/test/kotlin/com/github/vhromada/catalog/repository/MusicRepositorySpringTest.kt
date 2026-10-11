@@ -16,7 +16,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -83,7 +82,6 @@ class MusicRepositorySpringTest {
      * Test method for add music.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val music = MusicUtils.newDomainMusic(id = null)
         val expectedMusic = MusicUtils.newDomainMusic(id = MusicUtils.MUSIC_COUNT + 1)

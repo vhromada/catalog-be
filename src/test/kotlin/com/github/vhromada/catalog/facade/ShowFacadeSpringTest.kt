@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -200,7 +199,6 @@ class ShowFacadeSpringTest {
      * Test method for [ShowFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedShow = ShowUtils.newShow()
         val expectedDomainShow = ShowUtils.newDomainShow(id = ShowUtils.SHOWS_COUNT + 1)
@@ -499,7 +497,6 @@ class ShowFacadeSpringTest {
      * Test method for [ShowFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = ShowUtils.newRequest()
         val expectedShow = ShowUtils.getShow(index = 1)
@@ -862,7 +859,6 @@ class ShowFacadeSpringTest {
      * Test method for [ShowFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedShow = ShowUtils.getShow(index = 1)
         val expectedDomainShow = ShowUtils.getDomainShow(index = 1)

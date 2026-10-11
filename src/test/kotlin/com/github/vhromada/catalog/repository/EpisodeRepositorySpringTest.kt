@@ -18,7 +18,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -77,7 +76,6 @@ class EpisodeRepositorySpringTest {
      * Test method for add episode.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val episode = EpisodeUtils.newDomainEpisode(id = null)
         episode.season = SeasonUtils.getDomainSeason(entityManager = entityManager, id = 1)

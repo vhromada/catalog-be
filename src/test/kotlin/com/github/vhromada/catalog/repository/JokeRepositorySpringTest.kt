@@ -14,7 +14,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -75,7 +74,6 @@ class JokeRepositorySpringTest {
      * Test method for add joke.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val joke = JokeUtils.newDomainJoke(id = null)
         val expectedJoke = JokeUtils.newDomainJoke(id = JokeUtils.JOKES_COUNT + 1)

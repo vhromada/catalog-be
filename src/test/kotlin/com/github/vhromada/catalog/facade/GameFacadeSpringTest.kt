@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -186,7 +185,6 @@ class GameFacadeSpringTest {
      * Test method for [GameFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedGame = GameUtils.newGame()
         val expectedDomainGame = GameUtils.newDomainGame(id = GameUtils.GAMES_COUNT + 1)
@@ -482,7 +480,6 @@ class GameFacadeSpringTest {
      * Test method for [GameFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = GameUtils.newRequest()
         val expectedGame = GameUtils.getGame(index = 1)
@@ -828,7 +825,6 @@ class GameFacadeSpringTest {
      * Test method for [GameFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedGame = GameUtils.getGame(index = 1)
         val expectedDomainGame = GameUtils.getDomainGame(index = 1)

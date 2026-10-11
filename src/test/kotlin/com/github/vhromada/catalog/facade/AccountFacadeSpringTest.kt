@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -225,7 +224,6 @@ class AccountFacadeSpringTest {
      * Test method for [AccountFacade.updateCredentials].
      */
     @Test
-    @DirtiesContext
     fun updateCredentials() {
         val credentials = AccountUtils.newCredentials()
         val expectedAccount = AccountUtils.newAccount()
@@ -366,7 +364,6 @@ class AccountFacadeSpringTest {
      * Test method for [AccountFacade.updateRoles].
      */
     @Test
-    @DirtiesContext
     fun updateRoles() {
         val request = RoleUtils.newRequest()
         val expectedAccount = AccountUtils.getAccount(index = 1)
@@ -499,7 +496,6 @@ class AccountFacadeSpringTest {
      * Test method for [AccountFacade.addCredentials].
      */
     @Test
-    @DirtiesContext
     fun addCredentials() {
         val credentials = AccountUtils.newCredentials()
         val expectedAccount = AccountUtils.newAccount()

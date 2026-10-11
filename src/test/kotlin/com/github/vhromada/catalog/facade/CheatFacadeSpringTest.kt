@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -162,7 +161,6 @@ class CheatFacadeSpringTest {
      * Test method for [CheatFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val game = GameUtils.getDomainGame(index = 1)
             .fillAudit(audit = AuditUtils.updatedAudit())
@@ -359,7 +357,6 @@ class CheatFacadeSpringTest {
      * Test method for [CheatFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val game = GameUtils.getDomainGame(index = 2)
         val request = CheatUtils.newRequest()

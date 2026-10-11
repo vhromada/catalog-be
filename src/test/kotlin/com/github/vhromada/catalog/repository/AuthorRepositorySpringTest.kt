@@ -15,7 +15,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -76,7 +75,6 @@ class AuthorRepositorySpringTest {
      * Test method for add author.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val author = AuthorUtils.newDomainAuthor(id = null)
         val expectedAuthor = AuthorUtils.newDomainAuthor(id = AuthorUtils.AUTHORS_COUNT + 1)
@@ -118,7 +116,6 @@ class AuthorRepositorySpringTest {
      * Test method for remove author.
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 
@@ -133,7 +130,6 @@ class AuthorRepositorySpringTest {
      * Test method for remove all authors.
      */
     @Test
-    @DirtiesContext
     fun removeAll() {
         clearReferencedData()
 

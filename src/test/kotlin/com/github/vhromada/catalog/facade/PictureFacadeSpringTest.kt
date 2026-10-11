@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -137,7 +136,6 @@ class PictureFacadeSpringTest {
      * Test method for [PictureFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedPicture = PictureUtils.newPicture()
         val expectedDomainPicture = PictureUtils.newDomainPicture(id = PictureUtils.PICTURES_COUNT + 1)
@@ -194,7 +192,6 @@ class PictureFacadeSpringTest {
      * Test method for [PictureFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = PictureUtils.newRequest()
         val expectedPicture = PictureUtils.getPicture(index = 1)
@@ -262,7 +259,6 @@ class PictureFacadeSpringTest {
      * Test method for [PictureFacade.remove].
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 

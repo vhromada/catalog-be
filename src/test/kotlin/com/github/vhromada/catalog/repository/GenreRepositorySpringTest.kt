@@ -15,7 +15,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -76,7 +75,6 @@ class GenreRepositorySpringTest {
      * Test method for add genre.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val genre = GenreUtils.newDomainGenre(id = null)
         val expectedGenre = GenreUtils.newDomainGenre(id = GenreUtils.GENRES_COUNT + 1)
@@ -118,7 +116,6 @@ class GenreRepositorySpringTest {
      * Test method for remove genre.
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 
@@ -133,7 +130,6 @@ class GenreRepositorySpringTest {
      * Test method for remove all genres.
      */
     @Test
-    @DirtiesContext
     fun removeAll() {
         clearReferencedData()
 

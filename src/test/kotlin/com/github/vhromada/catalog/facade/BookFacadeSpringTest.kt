@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -186,7 +185,6 @@ class BookFacadeSpringTest {
      * Test method for [BookFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedBook = BookUtils.newBook()
         val expectedDomainBook = BookUtils.newDomainBook(id = BookUtils.BOOKS_COUNT + 1)
@@ -419,7 +417,6 @@ class BookFacadeSpringTest {
      * Test method for [BookFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = BookUtils.newRequest()
         val expectedBook = BookUtils.getBook(index = 1)
@@ -709,7 +706,6 @@ class BookFacadeSpringTest {
      * Test method for [BookFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedBook = BookUtils.getBook(index = 1)
         val expectedDomainBook = BookUtils.getDomainBook(index = 1)

@@ -17,7 +17,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -73,7 +72,6 @@ class SongRepositorySpringTest {
      * Test method for add song.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val song = SongUtils.newDomainSong(id = null)
         song.music = MusicUtils.getDomainMusic(entityManager = entityManager, id = 1)

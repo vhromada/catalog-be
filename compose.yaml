@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: 'postgres:18.4'
+    image: 'postgres:18.6'
     environment:
       - 'POSTGRES_DB=catalog'
       - 'POSTGRES_PASSWORD=catalog'
@@ -12,12 +12,14 @@ services:
   catalog:
     depends_on:
       - postgres
-    image: 'catalog-be:26.4'
+    image: 'catalog-be:26.5-SNAPSHOT'
     ports:
       - '8100:8080'
     build:
       context: .
     environment:
+      - CATALOG_SECURITY_USERNAME=catalog
+      - CATALOG_SECURITY_PASSWORD=catalog
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/catalog
       - SPRING_DATASOURCE_USERNAME=catalog
       - SPRING_DATASOURCE_PASSWORD=catalog

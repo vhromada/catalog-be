@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -163,7 +162,6 @@ class AuthorFacadeSpringTest {
      * Test method for [AuthorFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedAuthor = AuthorUtils.newAuthor()
         val expectedDomainAuthor = AuthorUtils.newDomainAuthor(id = AuthorUtils.AUTHORS_COUNT + 1)
@@ -250,7 +248,6 @@ class AuthorFacadeSpringTest {
      * Test method for [AuthorFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = AuthorUtils.newRequest()
         val expectedAuthor = AuthorUtils.getAuthor(index = 1)
@@ -350,7 +347,6 @@ class AuthorFacadeSpringTest {
      * Test method for [AuthorFacade.remove].
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 
@@ -380,7 +376,6 @@ class AuthorFacadeSpringTest {
      * Test method for [AuthorFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedAuthor = AuthorUtils.getAuthor(index = 1)
         val expectedDomainAuthor = AuthorUtils.getDomainAuthor(index = 1)

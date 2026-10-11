@@ -1,3 +1,10 @@
+catalog:
+  security:
+    username: catalog
+    password: catalog
+log:
+  payload:
+    sensitive: '"password"\s*:\s*".*?";"password":"*****"|[a,A]uthorization=\[Basic.*?\];authorization=[Basic *****]|[a,A]uthorization:\"Basic.*?\";authorization:\"Basic *****\"'
 management:
   endpoint:
     env:
@@ -57,6 +64,3 @@ springdoc:
     doc-expansion: none
     groups-order: asc
     tags-sorter: alpha
-log:
-  payload:
-    sensitive: '"password"\s*:\s*".*?";"password":"*****"|[a,A]uthorization=\[Basic.*?\];authorization=[Basic *****]|[a,A]uthorization:\"Basic.*?\";authorization:\"Basic *****\"'

@@ -15,7 +15,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -76,7 +75,6 @@ class ProgramRepositorySpringTest {
      * Test method for add program.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val program = ProgramUtils.newDomainProgram(id = null)
         val expectedProgram = ProgramUtils.newDomainProgram(id = ProgramUtils.PROGRAMS_COUNT + 1)

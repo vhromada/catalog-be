@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -140,7 +139,6 @@ class JokeFacadeSpringTest {
      * Test method for [JokeFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedJoke = JokeUtils.newJoke()
         val expectedDomainJoke = JokeUtils.newDomainJoke(id = JokeUtils.JOKES_COUNT + 1)
@@ -193,7 +191,6 @@ class JokeFacadeSpringTest {
      * Test method for [JokeFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = JokeUtils.newRequest()
         val expectedJoke = JokeUtils.getJoke(index = 1)
@@ -261,7 +258,6 @@ class JokeFacadeSpringTest {
      * Test method for [JokeFacade.remove].
      */
     @Test
-    @DirtiesContext
     fun remove() {
         facade.remove(uuid = JokeUtils.getJoke(index = 1).uuid)
         entityManager.flush()

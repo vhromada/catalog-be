@@ -2,6 +2,21 @@
 
 This document provides essential information for AI agents (Claude, Copilot, Cursor, etc.) working on the Catalog BE project.
 
+## 📖 Project
+Catalog BE — a Spring Boot / Kotlin REST API for a personal catalog of movies, shows, games, music, programs, books and jokes.
+
+Beyond those, the API also manages supporting resources (authors, genres, cheats, pictures) and account/role/register data; each resource has its own controller → facade → service → repository stack
+under `src/main/kotlin/com/github/vhromada/catalog`, so adding or changing one means touching every layer plus its `mapper`, `validator` and test-data builder in `src/test/.../utils`.
+
+## ⚠️ Things to Know
+- The whole schema lives in a single Flyway file, `src/main/resources/db/migration/V1.0__Catalog.sql`. `catalog-test` and `../migrate` depend on this schema; check them when changing it (see the
+  parent `IdeaProjects/CLAUDE.md`).
+- Actuator is exposed at `/app` (not `/actuator`) with every endpoint enabled and `env` showing values, and `/app`, `/app/*` and `/rest/public/**` are unauthenticated (see `application.yml` and
+  `CatalogSecurityConfiguration.kt`). Treat new endpoints under those paths as public.
+- No linter or formatter (detekt/ktlint/spotless) is configured in `build.gradle.kts`; style is enforced by convention only (see Coding Standards).
+- The application version lives in three places (`build.gradle.kts`, `compose.yaml`, `CatalogWebConfiguration.kt`); change it with `/update-version`, not by hand. Most dependency versions are managed
+  by Spring Boot; only a few are explicit in `build.gradle.kts` (see `/update-dependencies`).
+
 ## 🛠 Tech Stack
 - **Language:** Kotlin
 - **Framework:** Spring Boot
@@ -14,15 +29,23 @@ This document provides essential information for AI agents (Claude, Copilot, Cur
 ## 🚀 Key Commands (Windows PowerShell)
 - **Build:** `.\gradlew.bat build`
 - **Clean:** `.\gradlew.bat clean`
-- **Start local DB:** `docker compose up -d postgres` (starts PostgreSQL from `compose.yaml` on `localhost:5432/catalog`, user/password `catalog`/`catalog`) — required before `bootRun`, since `application.yml` expects the DB already running.
+- **Start local DB:** `docker compose up -d postgres` (starts PostgreSQL from `compose.yaml` on `localhost:5432/catalog`, user/password `catalog`/`catalog`) — required before `bootRun`, since
+  `application.yml` expects the DB already running.
 - **Run App:** `.\gradlew.bat bootRun`
 - **Run All Tests:** `.\gradlew.bat test`
-- **Run Specific Test:** `.\gradlew.bat test --tests <fqn>` (e.g. `.\gradlew.bat test --tests com.github.vhromada.catalog.common.TimeTest` or `.\gradlew.bat test --tests "com.github.vhromada.catalog.common.TimeTest.length"`)
+- **Run Specific Test:** `.\gradlew.bat test --tests <fqn>` (e.g. `.\gradlew.bat test --tests com.github.vhromada.catalog.common.TimeTest` or
+  `.\gradlew.bat test --tests "com.github.vhromada.catalog.common.TimeTest.length"`)
+
+### Project commands (Claude Code slash commands in `.claude/commands/`)
+- **`/update-version <version>`** (e.g. `26.5` or `26.5-SNAPSHOT`): sets the application version in `build.gradle.kts` and `compose.yaml` (with the `-SNAPSHOT` suffix) and in the OpenAPI
+  `.version(...)` of `CatalogWebConfiguration.kt` (without the suffix). Does not commit.
+- **`/update-dependencies`**: looks up the latest stable Gradle, Kotlin, Spring Boot, plugin, library and PostgreSQL image versions, applies them and runs `.\gradlew.bat clean build`. Does not commit.
 
 ## 🧩 Architectural Patterns
 
 ### Result Pattern
-Facades and services return the actual entity/DTO (or throw) — they do **not** return `Result<T>`. `Result<T>` is used internally by validators to accumulate validation failures, which are then thrown as an `InputException` and turned into an HTTP response by `RestExceptionHandler`.
+Facades and services return the actual entity/DTO (or throw) — they do **not** return `Result<T>`. `Result<T>` is used internally by validators to accumulate validation failures, which are then thrown
+as an `InputException` and turned into an HTTP response by `RestExceptionHandler`.
 - **Payload:** `data`
 - **Status:** `OK`, `WARN`, `ERROR`
 - **Events:** List of `Event` (severity, key, message)
@@ -48,30 +71,54 @@ override fun validateRequest(request: ChangeGenreRequest) {
 
 ## 🔐 Auth
 Two independent layers:
-- **Request auth context:** header-based, not JWT/OAuth. `X-Request-Id` and `X-User` headers (`common/auth/Header.kt`) are read by `AuthContextFilter` into a request-scoped `AuthContextHolder`/`AuthContext` (via `AuthContextFactory`) and echoed back on the response; the filter also catches `InputException` and writes the JSON error body directly, bypassing `RestExceptionHandler`.
-- **Spring Security:** configured in `CatalogSecurityConfiguration.kt` — HTTP Basic auth, a single in-memory user (`catalog`/`catalog`, role `USER`), CORS enabled, CSRF disabled, `/rest/public/**` and `/app`, `/app/*` open, everything else requires authentication. No method-level RBAC (`@PreAuthorize`/`@Secured`) anywhere.
+- **Request auth context:** header-based, not JWT/OAuth. `X-Request-Id` and `X-User` headers (`common/auth/Header.kt`) are read by `AuthContextFilter` into a request-scoped
+  `AuthContextHolder`/`AuthContext` (via `AuthContextFactory`) and echoed back on the response; the filter also catches `InputException` and writes the JSON error body directly, bypassing
+  `RestExceptionHandler`.
+- **Spring Security:** configured in `CatalogSecurityConfiguration.kt` — HTTP Basic auth, a single in-memory user (role `USER`; credentials from
+  `catalog.security.username`/`catalog.security.password`, default `catalog`/`catalog`), CORS enabled, CSRF disabled, `/rest/public/**` and `/app`, `/app/*` open, everything else requires
+  authentication. No method-level RBAC (`@PreAuthorize`/`@Secured`) anywhere.
 
 ### Bidirectional entity relationships across Facade→Service calls
-A `@Transactional` service method that needs to mutate a parent's `@OneToMany(fetch = EAGER, cascade = [ALL], orphanRemoval = true)` collection (e.g. `Show.seasons`, `Music.songs`) must **re-fetch the parent fresh via its own repository inside that same method** — never navigate from the child's `@ManyToOne(fetch = LAZY)` back-reference (`season.show`, `song.music`) if that child was itself obtained from a separate call (e.g. a Facade's `xService.get(uuid)`), since that reference may be bound to an already-closed session, throwing `org.hibernate.LazyInitializationException`. Reading `.id` off a lazy proxy is always safe (never triggers initialization) — use it to re-fetch: `val show = showRepository.findById(season.show!!.id!!).orElseThrow()`, then mutate `show.seasons` and `save(show)`. See `SeasonServiceImpl.remove()`/`duplicate()` (and the equivalent in `EpisodeServiceImpl`/`SongServiceImpl`/`BookItemServiceImpl`) for the reference implementation — fixed 2026-07-27 after this exact bug reached production via `catalog-test`'s E2E suite.
+A `@Transactional` service method that needs to mutate a parent's `@OneToMany(fetch = EAGER, cascade = [ALL], orphanRemoval = true)` collection (e.g. `Show.seasons`, `Music.songs`) must **re-fetch the
+parent fresh via its own repository inside that same method**. Never navigate from the child's `@ManyToOne(fetch = LAZY)` back-reference (`season.show`, `song.music`) if that child was itself obtained
+from a separate call (e.g. a Facade's `xService.get(uuid)`), since that reference may be bound to an already-closed session, throwing `org.hibernate.LazyInitializationException`. Reading `.id` off a
+lazy proxy is always safe (never triggers initialization) — use it to re-fetch: `val show = showRepository.findById(season.show!!.id!!).orElseThrow()`, then mutate `show.seasons` and `save(show)`. See
+`SeasonServiceImpl.remove()`/`duplicate()` (and the equivalent in `EpisodeServiceImpl`/`SongServiceImpl`/`BookItemServiceImpl`) for the reference implementation.
 
 ## 🧪 Testing Strategy
 - **Unit Tests:** Use `@ExtendWith(MockitoExtension::class)`. Place in `src/test/kotlin`, mirroring the `src/main/kotlin` package layout.
-- **Integration Tests (facade/service/repository):** Named `*SpringTest`. Use `@ExtendWith(SpringExtension::class)`, `@ContextConfiguration(classes = [TestConfiguration::class])`, `@Transactional`, `@Rollback`. `TestConfiguration.kt` imports `ContainerConfiguration.kt` (a `@ServiceConnection`-annotated `postgres:18.4` Testcontainer; Flyway migrations run against it automatically) plus `CatalogConfiguration`, overriding `AuditorAware`, `TimeProvider`, `PasswordEncoder` (no-op), `NormalizerService`, and CORS beans for deterministic tests. `@SpringBootTest` itself is only used by `CatalogContextTest`, a plain context-loads smoke test — not the general integration pattern. **Caveat:** because the whole test method runs in one shared transaction/session, these tests cannot catch bugs caused by an entity crossing a *closed* session boundary (e.g. a Facade fetching a child in one call, passing it to another `@Transactional` method) — only a separate-process E2E suite hitting real, independent HTTP requests can. Don't treat a green `*SpringTest` run as proof that such cross-call code is safe.
-- **Controller Tests:** Use `@WebMvcTest(<Controller>::class)` + `@WithMockUser(value = TestConstants.USERNAME, password = TestConstants.PASSWORD)`, mocking the facade with `@MockitoBean` (e.g. `AuthorControllerTest`).
-- **Test Data:** Reuse the per-entity test data builders in `src/test/kotlin/com/github/vhromada/catalog/utils` (e.g. `GenreUtils`, `MovieUtils`) instead of hand-building domain/entity objects in new tests.
+- **Integration Tests (facade/service/repository):** Named `*SpringTest`. Use `@ExtendWith(SpringExtension::class)`, `@ContextConfiguration(classes = [TestConfiguration::class])`, `@Transactional`,
+  `@Rollback`. `TestConfiguration.kt` imports `ContainerConfiguration.kt` (a `@ServiceConnection`-annotated `postgres:18.6` Testcontainer; Flyway migrations run against it automatically) plus
+  `CatalogConfiguration`, overriding `AuditorAware`, `TimeProvider`, `PasswordEncoder` (no-op), `NormalizerService`, and CORS beans for deterministic tests. `@SpringBootTest` itself is only used by
+  `CatalogContextTest`, a plain context-loads smoke test — not the general integration pattern. **Caveat:** because the whole test method runs in one shared transaction/session, these tests cannot
+  catch bugs caused by an entity crossing a *closed* session boundary (e.g. a Facade fetching a child in one call, passing it to another `@Transactional` method) — only a separate-process E2E suite
+  hitting real, independent HTTP requests can. Don't treat a green `*SpringTest` run as proof that such cross-call code is safe.
+- **Database sequences:** `@Rollback` does not revert sequences, so tests expecting generated ids (e.g. `GenreUtils.GENRES_COUNT + 1`) rely on `SequenceResetTestExecutionListener`, which snapshots
+  `pg_sequences` before each test method and restores it afterwards. It is registered for all tests in `src/test/resources/META-INF/spring.factories`. Don't use `@DirtiesContext` for this — all
+  `*SpringTest` classes share one cached Spring context and thus one PostgreSQL container. `CatalogContextTest` (`@SpringBootTest`) builds its own context, which currently starts a second container.
+- **Controller Tests:** Use `@WebMvcTest(<Controller>::class)` + `@WithMockUser(value = TestConstants.USERNAME, password = TestConstants.PASSWORD)`, mocking the facade with `@MockitoBean` (e.g.
+  `AuthorControllerTest`).
+- **Test Data:** Reuse the per-entity test data builders in `src/test/kotlin/com/github/vhromada/catalog/utils` (e.g. `GenreUtils`, `MovieUtils`) instead of hand-building domain/entity objects in new
+  tests.
 - **Assertions:** Prefer AssertJ.
 - **Naming:** Use expressive names, backticks allowed (e.g., ` `should return error when input is empty` `).
 
 ## 📝 Coding Standards
 - **Style:** Standard Kotlin conventions.
 - **Immutability:** Prefer `val` over `var`.
-- **Named arguments:** always use named arguments when calling a project-defined function, method, or constructor (e.g. `Event(severity = Severity.ERROR, key = "GENRE_NAME_NULL", message = "Name mustn't be null.")`, `InputException(result = result)`, `facade.update(uuid = uuid, request = request)`), including single-argument calls. This applies in both main and test source. It does **not** apply to Kotlin stdlib/JDK/Spring calls (`repository.save(author)`, `Sort.by(...)`, etc.) — leave those positional as usual.
-- **Bean naming:** every `@RestController`/`@Service`/`@Component`-annotated class gets an explicit bean name matching its camelCase class name (e.g. `@RestController("genreController")`, `@Service("authorService")`, `@Component("uuidProvider")`) — never bare `@RestController`/`@Service`/`@Component`. Spring Data JPA repositories (`repository/`) are plain interfaces with no stereotype annotation, so this doesn't apply to them.
+- **Named arguments:** always use named arguments when calling a project-defined function, method, or constructor (e.g.
+  `Event(severity = Severity.ERROR, key = "GENRE_NAME_NULL", message = "Name mustn't be null.")`, `InputException(result = result)`, `facade.update(uuid = uuid, request = request)`), including
+  single-argument calls. This applies in both main and test source. It does **not** apply to Kotlin stdlib/JDK/Spring calls (`repository.save(author)`, `Sort.by(...)`, etc.) — leave those positional
+  as usual.
+- **Bean naming:** every `@RestController`/`@Service`/`@Component`-annotated class gets an explicit bean name matching its camelCase class name (e.g. `@RestController("genreController")`,
+  `@Service("authorService")`, `@Component("uuidProvider")`) — never bare `@RestController`/`@Service`/`@Component`. Spring Data JPA repositories (`repository/`) are plain interfaces with no
+  stereotype annotation, so this doesn't apply to them.
 - **Documentation:** Use KDoc for all public classes and methods (existing code documents every constructor property too — match that density in new files).
 - **Logging:** Use `io.github.oshai:kotlin-logging`.
   - `private val logger = KotlinLogging.logger {}`
 - **Database Migrations:** Located in `src/main/resources/db/migration`.
   - Format: `V<version>__<description>.sql`
+- **Markdown:** lines are at most 200 characters; wrap longer paragraphs and bullets at that width and indent continuation lines of a list item.
 
 ## 📂 Project Structure
 Each layer with business logic follows an interface + `impl` package split, named `<Name><Layer>[Impl]` (e.g. `facade/GenreFacade.kt` + `facade/impl/GenreFacadeImpl.kt`):
@@ -81,10 +128,13 @@ Controller → Facade → Service → Repository
 ```
 
 - `src/main/kotlin/com/github/vhromada/catalog`:
-  - Root package also holds the Spring bootstrap/config classes directly (no `config` subpackage): `CatalogApplication.kt` (entrypoint), `CatalogConfiguration.kt`, `CatalogSecurityConfiguration.kt` (see Auth below), `CatalogWebConfiguration.kt`.
-  - `common`: `common/auth` — request-scoped auth context (`AuthContext`, `AuthContextHolder`, `AuthContextFilter`) populated from request headers; `common/log` — logging helpers; `common/result` — the `Result<T>`/`Event` types (see Result Pattern above).
-  - `utils`: shared constants (`Constants.kt`) — distinct from the test-only `src/test/kotlin/.../utils` package of test data builders mentioned below.
-  - `controller`: `@RestController`s, one flat package, each mapped to a `rest/<resource>` URL path (e.g. `GenreController` → `@RequestMapping("rest/genres")`). Thin: delegate straight to a facade, no logic.
+  - Root package also holds the Spring bootstrap/config classes directly (no `config` subpackage): `CatalogApplication.kt` (entrypoint), `CatalogConfiguration.kt`, `CatalogSecurityConfiguration.kt`
+    (see Auth above), `CatalogWebConfiguration.kt`.
+  - `common`: `common/auth` — request-scoped auth context (`AuthContext`, `AuthContextHolder`, `AuthContextFilter`) populated from request headers; `common/log` — logging helpers; `common/result` —
+    the `Result<T>`/`Event` types (see Result Pattern above).
+  - `utils`: shared constants (`Constants.kt`) — distinct from the test-only `src/test/kotlin/.../utils` package of test data builders mentioned above.
+  - `controller`: `@RestController`s, one flat package, each mapped to a `rest/<resource>` URL path (e.g. `GenreController` → `@RequestMapping("rest/genres")`). Thin: delegate straight to a facade, no
+    logic.
   - `facade`: orchestrates a use case — runs the relevant `validator`, calls the `service`, and uses a `mapper` to convert between `entity` and `domain`.
   - `service`: domain logic, talks to `repository`. Operates on `domain` objects.
   - `repository`: Spring Data JPA repositories over `domain` entities.
@@ -101,7 +151,7 @@ Controller → Facade → Service → Repository
 When working on this project, always:
 1. **Build & Test:** Use `.\gradlew.bat` for all tasks. Never use global `gradle` or `gradlew` (unless on Unix).
 2. **Architecture:** Use `Result<T>`/`Event` inside validators and throw `InputException` on failure; facade and service methods return the entity/DTO directly, not `Result<T>`.
-3. **Tests:** 
+3. **Tests:**
    - Ensure new features have both unit and integration tests.
    - Use Testcontainers for integration tests.
    - Use expressive names with backticks for test methods.

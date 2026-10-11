@@ -16,7 +16,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -77,7 +76,6 @@ class PictureRepositorySpringTest {
      * Test method for add picture.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val picture = PictureUtils.newDomainPicture(id = null)
         val expectedPicture = PictureUtils.newDomainPicture(id = PictureUtils.PICTURES_COUNT + 1)
@@ -119,7 +117,6 @@ class PictureRepositorySpringTest {
      * Test method for remove picture.
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 
@@ -134,7 +131,6 @@ class PictureRepositorySpringTest {
      * Test method for remove all pictures.
      */
     @Test
-    @DirtiesContext
     fun removeAll() {
         clearReferencedData()
 

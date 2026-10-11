@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -160,7 +159,6 @@ class ProgramFacadeSpringTest {
      * Test method for [ProgramFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedProgram = ProgramUtils.newProgram()
         val expectedDomainProgram = ProgramUtils.newDomainProgram(id = ProgramUtils.PROGRAMS_COUNT + 1)
@@ -319,7 +317,6 @@ class ProgramFacadeSpringTest {
      * Test method for [ProgramFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = ProgramUtils.newRequest()
         val expectedProgram = ProgramUtils.getProgram(index = 1)
@@ -516,7 +513,6 @@ class ProgramFacadeSpringTest {
      * Test method for [ProgramFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedProgram = ProgramUtils.getProgram(index = 1)
         val expectedDomainProgram = ProgramUtils.getDomainProgram(index = 1)

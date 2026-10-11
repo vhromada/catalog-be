@@ -13,7 +13,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -80,7 +79,6 @@ class AccountRepositorySpringTest {
      * Test method for add account.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val account = AccountUtils.newDomainAccount(id = null)
         val expectedAccount = AccountUtils.newDomainAccount(id = AccountUtils.ACCOUNTS_COUNT + 1)
@@ -100,7 +98,6 @@ class AccountRepositorySpringTest {
      * Test method for update account.
      */
     @Test
-    @DirtiesContext
     fun update() {
         val account = AccountUtils.getDomainAccount(entityManager = entityManager, id = 1)!!
             .updated()

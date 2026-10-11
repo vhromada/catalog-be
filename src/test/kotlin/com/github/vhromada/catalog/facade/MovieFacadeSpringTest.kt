@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -193,7 +192,6 @@ class MovieFacadeSpringTest {
      * Test method for [MovieFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedMovie = MovieUtils.newMovie()
         val expectedDomainMovie = MovieUtils.newDomainMovie(id = MovieUtils.MOVIES_COUNT + 1)
@@ -769,7 +767,6 @@ class MovieFacadeSpringTest {
      * Test method for [MovieFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = MovieUtils.newRequest()
         val expectedMovie = MovieUtils.getMovie(index = 1)
@@ -1403,7 +1400,6 @@ class MovieFacadeSpringTest {
      * Test method for [MovieFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedMovie = MovieUtils.getMovie(index = 1)
         val expectedDomainMovie = MovieUtils.getDomainMovie(index = 1)

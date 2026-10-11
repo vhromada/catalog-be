@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -163,7 +162,6 @@ class GenreFacadeSpringTest {
      * Test method for [GenreFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val expectedGenre = GenreUtils.newGenre()
         val expectedDomainGenre = GenreUtils.newDomainGenre(id = GenreUtils.GENRES_COUNT + 1)
@@ -216,7 +214,6 @@ class GenreFacadeSpringTest {
      * Test method for [GenreFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val request = GenreUtils.newRequest()
         val expectedGenre = GenreUtils.getGenre(index = 1)
@@ -284,7 +281,6 @@ class GenreFacadeSpringTest {
      * Test method for [GenreFacade.remove].
      */
     @Test
-    @DirtiesContext
     fun remove() {
         clearReferencedData()
 
@@ -314,7 +310,6 @@ class GenreFacadeSpringTest {
      * Test method for [GenreFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val expectedGenre = GenreUtils.getGenre(index = 1)
         val expectedDomainGenre = GenreUtils.getDomainGenre(index = 1)

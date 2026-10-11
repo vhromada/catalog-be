@@ -16,7 +16,6 @@ import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -69,7 +68,6 @@ class CheatRepositorySpringTest {
      * Test method for add cheat.
      */
     @Test
-    @DirtiesContext
     fun add() {
         val cheat = CheatUtils.newDomainCheat(id = null)
         cheat.game = GameUtils.getDomainGame(entityManager = entityManager, id = 1)
@@ -122,7 +120,6 @@ class CheatRepositorySpringTest {
      * Test method for update cheat with added cheat's data.
      */
     @Test
-    @DirtiesContext
     fun updateAddedData() {
         val cheat = CheatUtils.getDomainCheat(entityManager = entityManager, id = 1)!!
             .updated()
@@ -147,7 +144,6 @@ class CheatRepositorySpringTest {
      * Test method for update cheat with removed cheat's data.
      */
     @Test
-    @DirtiesContext
     fun updateRemovedData() {
         val cheat = CheatUtils.getDomainCheat(entityManager = entityManager, id = 1)!!
             .updated()

@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -200,7 +199,6 @@ class SongFacadeSpringTest {
      * Test method for [SongFacade.add].
      */
     @Test
-    @DirtiesContext
     fun add() {
         val music = MusicUtils.getDomainMusic(index = 1)
         val expectedSong = SongUtils.newSong()
@@ -321,7 +319,6 @@ class SongFacadeSpringTest {
      * Test method for [SongFacade.update].
      */
     @Test
-    @DirtiesContext
     fun update() {
         val music = MusicUtils.getDomainMusic(index = 1)
         val request = SongUtils.newRequest()
@@ -508,7 +505,6 @@ class SongFacadeSpringTest {
      * Test method for [SongFacade.duplicate].
      */
     @Test
-    @DirtiesContext
     fun duplicate() {
         val music = MusicUtils.getDomainMusic(index = 1)
         val expectedSong = SongUtils.getSong(index = 1)
