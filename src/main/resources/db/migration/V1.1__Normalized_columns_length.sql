@@ -1,0 +1,16 @@
+ALTER TABLE genres ALTER COLUMN normalized_genre_name TYPE VARCHAR(210);
+ALTER TABLE movies ALTER COLUMN normalized_czech_name TYPE VARCHAR(210);
+ALTER TABLE movies ALTER COLUMN original_name TYPE VARCHAR(200);
+ALTER TABLE movies ALTER COLUMN normalized_original_name TYPE VARCHAR(210);
+ALTER TABLE tv_shows ALTER COLUMN normalized_czech_name TYPE VARCHAR(210);
+ALTER TABLE tv_shows ALTER COLUMN original_name TYPE VARCHAR(200);
+ALTER TABLE tv_shows ALTER COLUMN normalized_original_name TYPE VARCHAR(210);
+ALTER TABLE games ALTER COLUMN normalized_game_name TYPE VARCHAR(210);
+ALTER TABLE music ALTER COLUMN normalized_music_name TYPE VARCHAR(210);
+ALTER TABLE programs ALTER COLUMN normalized_program_name TYPE VARCHAR(210);
+ALTER TABLE authors ALTER COLUMN normalized_first_name TYPE VARCHAR(110);
+ALTER TABLE authors ALTER COLUMN normalized_middle_name TYPE VARCHAR(110);
+ALTER TABLE authors ALTER COLUMN normalized_last_name TYPE VARCHAR(110);
+ALTER TABLE books ALTER COLUMN normalized_czech_name TYPE VARCHAR(210);
+ALTER TABLE books ALTER COLUMN original_name TYPE VARCHAR(200);
+ALTER TABLE books ALTER COLUMN normalized_original_name TYPE VARCHAR(210);
