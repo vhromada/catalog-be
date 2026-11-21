@@ -22,7 +22,7 @@ class ContainerConfiguration {
     @Bean
     @ServiceConnection
     fun postgresContainer(): PostgreSQLContainer {
-        return PostgreSQLContainer(DockerImageName.parse("postgres:18.6"))
+        return PostgreSQLContainer(DockerImageName.parse("postgres:18.7"))
     }
 
 }

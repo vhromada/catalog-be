@@ -9,8 +9,7 @@ Beyond those, the API also manages supporting resources (authors, genres, cheats
 under `src/main/kotlin/com/github/vhromada/catalog`, so adding or changing one means touching every layer plus its `mapper`, `validator` and test-data builder in `src/test/.../utils`.
 
 ## ⚠️ Things to Know
-- The whole schema lives in a single Flyway file, `src/main/resources/db/migration/V1.0__Catalog.sql`. `catalog-test` and `../migrate` depend on this schema; check them when changing it (see the
-  parent `IdeaProjects/CLAUDE.md`).
+- The whole schema lives in a single Flyway file, `src/main/resources/db/migration/V1.0__Catalog.sql`.
 - Actuator is exposed at `/app` (not `/actuator`) with every endpoint enabled and `env` showing values, and `/app`, `/app/*` and `/rest/public/**` are unauthenticated (see `application.yml` and
   `CatalogSecurityConfiguration.kt`). Treat new endpoints under those paths as public.
 - No linter or formatter (detekt/ktlint/spotless) is configured in `build.gradle.kts`; style is enforced by convention only (see Coding Standards).
@@ -88,7 +87,7 @@ lazy proxy is always safe (never triggers initialization) — use it to re-fetch
 ## 🧪 Testing Strategy
 - **Unit Tests:** Use `@ExtendWith(MockitoExtension::class)`. Place in `src/test/kotlin`, mirroring the `src/main/kotlin` package layout.
 - **Integration Tests (facade/service/repository):** Named `*SpringTest`. Use `@ExtendWith(SpringExtension::class)`, `@ContextConfiguration(classes = [TestConfiguration::class])`, `@Transactional`,
-  `@Rollback`. `TestConfiguration.kt` imports `ContainerConfiguration.kt` (a `@ServiceConnection`-annotated `postgres:18.6` Testcontainer; Flyway migrations run against it automatically) plus
+  `@Rollback`. `TestConfiguration.kt` imports `ContainerConfiguration.kt` (a `@ServiceConnection`-annotated `postgres:18.7` Testcontainer; Flyway migrations run against it automatically) plus
   `CatalogConfiguration`, overriding `AuditorAware`, `TimeProvider`, `PasswordEncoder` (no-op), `NormalizerService`, and CORS beans for deterministic tests. `@SpringBootTest` itself is only used by
   `CatalogContextTest`, a plain context-loads smoke test — not the general integration pattern. **Caveat:** because the whole test method runs in one shared transaction/session, these tests cannot
   catch bugs caused by an entity crossing a *closed* session boundary (e.g. a Facade fetching a child in one call, passing it to another `@Transactional` method) — only a separate-process E2E suite
@@ -118,7 +117,8 @@ lazy proxy is always safe (never triggers initialization) — use it to re-fetch
   - `private val logger = KotlinLogging.logger {}`
 - **Database Migrations:** Located in `src/main/resources/db/migration`.
   - Format: `V<version>__<description>.sql`
-- **Markdown:** lines are at most 200 characters; wrap longer paragraphs and bullets at that width and indent continuation lines of a list item.
+- **Markdown:** lines are at most 200 characters, except table rows. When wrapping, fill each line as close to 200 characters as possible instead of using several shorter lines, and indent
+  continuation lines of a list item. Format tables for readability: spaces only (no tabs), every cell padded so the `|` separators align, and separator rows filled with `-` to the full column width.
 
 ## 📂 Project Structure
 Each layer with business logic follows an interface + `impl` package split, named `<Name><Layer>[Impl]` (e.g. `facade/GenreFacade.kt` + `facade/impl/GenreFacadeImpl.kt`):

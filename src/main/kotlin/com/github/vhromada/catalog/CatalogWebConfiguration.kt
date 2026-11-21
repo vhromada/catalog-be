@@ -70,7 +70,7 @@ class CatalogWebConfiguration : WebMvcConfigurer {
         val info = Info()
             .title("Catalog")
             .description("Catalog of movies, shows, games, music, programs, books and jokes")
-            .version("26.5")
+            .version("26.6")
         return OpenAPI()
             .info(info)
     }

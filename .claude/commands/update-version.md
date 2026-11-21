@@ -8,8 +8,8 @@ Update the application version of Catalog BE to the new version `$ARGUMENTS`.
 
 ## 1. Validate the input
 
-The new version is required and must match `^\d+\.\d+(-SNAPSHOT)?$` (e.g. `26.5` or `26.5-SNAPSHOT`).
-If `$ARGUMENTS` is empty or does not match, stop and ask the user for a valid version. Do not change anything.
+The new version is required and must match `^\d+\.\d+(-SNAPSHOT)?$` (e.g. `26.5` or `26.5-SNAPSHOT`). If `$ARGUMENTS` is empty or does not match, stop and ask the user for a valid version. Do not
+change anything.
 
 Derive two values:
 - `full` — the argument exactly as given (may contain the `-SNAPSHOT` suffix).
