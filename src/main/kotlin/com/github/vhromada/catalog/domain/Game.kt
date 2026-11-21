@@ -78,6 +78,20 @@ data class Game(
     var cheat: Cheat?,
 
     /**
+     * Walkthrough
+     */
+    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "walkthrough")
+    var walkthrough: Walkthrough?,
+
+    /**
+     * Handbook
+     */
+    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "handbook")
+    var handbook: Handbook?,
+
+    /**
      * True if there is crack
      */
     var crack: Boolean,

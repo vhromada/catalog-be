@@ -8,11 +8,11 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ~/apps/postgres/catalog-dev:/var/lib/postgresql
+      - pgdata:/var/lib/postgresql
   catalog:
     depends_on:
       - postgres
-    image: 'catalog-be:26.6-SNAPSHOT'
+    image: 'catalog-be:26.6'
     ports:
       - '8100:8080'
     build:
@@ -23,3 +23,5 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/catalog
       - SPRING_DATASOURCE_USERNAME=catalog
       - SPRING_DATASOURCE_PASSWORD=catalog
+volumes:
+  pgdata:

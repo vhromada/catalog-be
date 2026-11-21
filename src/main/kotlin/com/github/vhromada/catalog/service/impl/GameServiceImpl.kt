@@ -63,7 +63,7 @@ class GameServiceImpl(
 
     @Transactional
     override fun duplicate(game: Game): Game {
-        return repository.save(game.copy(id = null, uuid = uuidProvider.getUuid(), cheat = null))
+        return repository.save(game.copy(id = null, uuid = uuidProvider.getUuid(), cheat = null, walkthrough = null, handbook = null))
     }
 
     override fun getStatistics(): GameStatistics {

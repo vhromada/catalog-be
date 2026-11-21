@@ -827,8 +827,9 @@ class GameFacadeSpringTest {
     @Test
     fun duplicate() {
         val expectedGame = GameUtils.getGame(index = 1)
+            .copy(walkthrough = false, handbook = false)
         val expectedDomainGame = GameUtils.getDomainGame(index = 1)
-            .copy(id = GameUtils.GAMES_COUNT + 1)
+            .copy(id = GameUtils.GAMES_COUNT + 1, walkthrough = null, handbook = null)
             .fillAudit(audit = AuditUtils.newAudit())
 
         val result = facade.duplicate(uuid = GameUtils.getGame(index = 1).uuid)

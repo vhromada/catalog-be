@@ -85,6 +85,16 @@ data class Game(
     /**
      * True if there is cheat
      */
-    val cheat: Boolean
+    val cheat: Boolean,
+
+    /**
+     * True if there is walkthrough
+     */
+    val walkthrough: Boolean,
+
+    /**
+     * True if there is handbook
+     */
+    val handbook: Boolean
 
 )

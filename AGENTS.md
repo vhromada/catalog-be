@@ -5,11 +5,12 @@ This document provides essential information for AI agents (Claude, Copilot, Cur
 ## 📖 Project
 Catalog BE — a Spring Boot / Kotlin REST API for a personal catalog of movies, shows, games, music, programs, books and jokes.
 
-Beyond those, the API also manages supporting resources (authors, genres, cheats, pictures) and account/role/register data; each resource has its own controller → facade → service → repository stack
-under `src/main/kotlin/com/github/vhromada/catalog`, so adding or changing one means touching every layer plus its `mapper`, `validator` and test-data builder in `src/test/.../utils`.
+Beyond those, the API also manages supporting resources (authors, genres, cheats, walkthroughs, handbooks, pictures) and account/role/register data; each resource has its own controller → facade →
+service → repository stack under `src/main/kotlin/com/github/vhromada/catalog`, so adding or changing one means touching every layer plus its `mapper`, `validator` and test-data builder in
+`src/test/.../utils`.
 
 ## ⚠️ Things to Know
-- The whole schema lives in a single Flyway file, `src/main/resources/db/migration/V1.0__Catalog.sql`.
+- The schema lives in Flyway files under `src/main/resources/db/migration` (`V1.0__Catalog.sql` is the base; later changes go into new `V<n>.0__<Description>.sql` files, never into V1.0).
 - Actuator is exposed at `/app` (not `/actuator`) with every endpoint enabled and `env` showing values, and `/app`, `/app/*` and `/rest/public/**` are unauthenticated (see `application.yml` and
   `CatalogSecurityConfiguration.kt`). Treat new endpoints under those paths as public.
 - No linter or formatter (detekt/ktlint/spotless) is configured in `build.gradle.kts`; style is enforced by convention only (see Coding Standards).
@@ -39,6 +40,20 @@ under `src/main/kotlin/com/github/vhromada/catalog`, so adding or changing one m
 - **`/update-version <version>`** (e.g. `26.5` or `26.5-SNAPSHOT`): sets the application version in `build.gradle.kts` and `compose.yaml` (with the `-SNAPSHOT` suffix) and in the OpenAPI
   `.version(...)` of `CatalogWebConfiguration.kt` (without the suffix). Does not commit.
 - **`/update-dependencies`**: looks up the latest stable Gradle, Kotlin, Spring Boot, plugin, library and PostgreSQL image versions, applies them and runs `.\gradlew.bat clean build`. Does not commit.
+
+### Project skills (`.claude/skills/`)
+Nine skills codify the per-layer conventions below so they're enforced consistently rather than just by imitating existing code. `new-resource` is the entry point for adding a whole new resource — it
+sequences the other eight:
+- **`new-resource`**: orchestrator for adding a complete new resource end-to-end; gathers the resource spec, sequences the layer skills below in the right order, hosts the shared `conventions.md`
+  reference.
+- **`flyway-migration`**: Flyway SQL conventions (sequence, id/uuid/normalized columns, audit columns, named constraints) and keeping the test-data migration in sync.
+- **`domain-repository`**: JPA domain entity, domain filter, Spring Data repository.
+- **`service-layer`**: service interface + impl over domain types, including the cross-call `LazyInitializationException` pitfall for child resources.
+- **`facade-layer`**: facade orchestration (validate → map → service → map).
+- **`mapper-layer`**: hand-written domain ↔ entity DTO mappers.
+- **`validator-layer`**: `Result`/`Event`/`InputException` business validation.
+- **`controller-api`**: REST controller + entity DTOs/requests/filters/statistics.
+- **`layer-tests`**: unit, controller (`@WebMvcTest`), integration (`*SpringTest`) tests and test-data builders.
 
 ## 🧩 Architectural Patterns
 

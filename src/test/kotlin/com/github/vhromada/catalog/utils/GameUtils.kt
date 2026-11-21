@@ -115,6 +115,8 @@ object GameUtils {
             mediaCount = index,
             format = getFormat(index = index),
             cheat = if (index == 1) null else CheatUtils.getDomainCheat(index = index - 1),
+            walkthrough = if (index == 2) null else WalkthroughUtils.getDomainWalkthrough(index = if (index == 1) 1 else 2),
+            handbook = if (index == 3) null else HandbookUtils.getDomainHandbook(index = index),
             crack = index != 1,
             serialKey = index != 1,
             patch = index != 1,
@@ -126,6 +128,8 @@ object GameUtils {
             note = if (index == 3) "Game $index note" else null
         ).fillAudit(audit = AuditUtils.getAudit())
         game.cheat?.game = game
+        game.walkthrough?.game = game
+        game.handbook?.game = game
         return game
     }
 
@@ -193,7 +197,9 @@ object GameUtils {
             saves = index == 3,
             otherData = if (index == 3) "Game $index other data" else null,
             note = if (index == 3) "Game $index note" else null,
-            cheat = index != 1
+            cheat = index != 1,
+            walkthrough = index != 2,
+            handbook = index != 3
         )
     }
 
@@ -242,6 +248,8 @@ object GameUtils {
             mediaCount = 0,
             format = "STEAM",
             cheat = null,
+            walkthrough = null,
+            handbook = null,
             crack = false,
             serialKey = false,
             patch = false,
@@ -276,7 +284,9 @@ object GameUtils {
             saves = false,
             otherData = null,
             note = null,
-            cheat = false
+            cheat = false,
+            walkthrough = false,
+            handbook = false
         ).updated()
     }
 
@@ -322,12 +332,21 @@ object GameUtils {
     /**
      * Asserts game deep equals.
      *
-     * @param expected   expected game
-     * @param actual     actual game
-     * @param checkCheat true if cheat should be checked
-     * @param ignoreUuid true if UUID should be ignored
+     * @param expected         expected game
+     * @param actual           actual game
+     * @param checkCheat       true if cheat should be checked
+     * @param checkWalkthrough true if walkthrough should be checked
+     * @param checkHandbook     true if handbook should be checked
+     * @param ignoreUuid       true if UUID should be ignored
      */
-    fun assertGameDeepEquals(expected: com.github.vhromada.catalog.domain.Game?, actual: com.github.vhromada.catalog.domain.Game?, checkCheat: Boolean = true, ignoreUuid: Boolean = false) {
+    fun assertGameDeepEquals(
+        expected: com.github.vhromada.catalog.domain.Game?,
+        actual: com.github.vhromada.catalog.domain.Game?,
+        checkCheat: Boolean = true,
+        checkWalkthrough: Boolean = true,
+        checkHandbook: Boolean = true,
+        ignoreUuid: Boolean = false
+    ) {
         if (expected == null) {
             assertThat(actual).isNull()
         } else {
@@ -361,6 +380,20 @@ object GameUtils {
                     assertThat(actual.cheat).isNull()
                 } else {
                     CheatUtils.assertCheatDeepEquals(expected = expected.cheat, actual = actual.cheat!!)
+                }
+            }
+            if (checkWalkthrough) {
+                if (expected.walkthrough == null) {
+                    assertThat(actual.walkthrough).isNull()
+                } else {
+                    WalkthroughUtils.assertWalkthroughDeepEquals(expected = expected.walkthrough, actual = actual.walkthrough!!)
+                }
+            }
+            if (checkHandbook) {
+                if (expected.handbook == null) {
+                    assertThat(actual.handbook).isNull()
+                } else {
+                    HandbookUtils.assertHandbookDeepEquals(expected = expected.handbook, actual = actual.handbook!!)
                 }
             }
         }
@@ -410,6 +443,8 @@ object GameUtils {
             it.assertThat(actual.otherData).isEqualTo(expected.otherData)
             it.assertThat(actual.note).isEqualTo(expected.note)
             it.assertThat(actual.cheat).isEqualTo(expected.cheat !== null)
+            it.assertThat(actual.walkthrough).isEqualTo(expected.walkthrough !== null)
+            it.assertThat(actual.handbook).isEqualTo(expected.handbook !== null)
         }
     }
 
@@ -457,6 +492,8 @@ object GameUtils {
             it.assertThat(actual.otherData).isEqualTo(expected.otherData)
             it.assertThat(actual.note).isEqualTo(expected.note)
             it.assertThat(actual.cheat).isEqualTo(expected.cheat)
+            it.assertThat(actual.walkthrough).isEqualTo(expected.walkthrough)
+            it.assertThat(actual.handbook).isEqualTo(expected.handbook)
         }
     }
 
@@ -478,6 +515,8 @@ object GameUtils {
             it.assertThat(actual.mediaCount).isEqualTo(expected.mediaCount)
             it.assertThat(actual.format).isEqualTo(expected.format)
             it.assertThat(actual.cheat).isNull()
+            it.assertThat(actual.walkthrough).isNull()
+            it.assertThat(actual.handbook).isNull()
             it.assertThat(actual.crack).isEqualTo(expected.crack)
             it.assertThat(actual.serialKey).isEqualTo(expected.serialKey)
             it.assertThat(actual.otherData).isEqualTo(expected.otherData)

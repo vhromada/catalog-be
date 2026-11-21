@@ -173,7 +173,7 @@ class GameServiceTest {
     @Test
     fun duplicate() {
         val expectedGame = GameUtils.getDomainGame(index = 2)
-            .copy(id = 0, uuid = TestConstants.UUID, cheat = null)
+            .copy(id = 0, uuid = TestConstants.UUID, cheat = null, handbook = null)
         val copyArgumentCaptor = argumentCaptor<Game>()
         whenever(repository.save(anyDomain())).thenAnswer {
             val argument = it.arguments[0] as Game

@@ -2,7 +2,7 @@
 
 Spring Boot / Kotlin REST API for a personal catalog of movies, shows, games, music, programs, books and jokes.
 
-Besides those, the API also manages supporting resources (authors, genres, cheats, pictures) and account/role/register data.
+Besides those, the API also manages supporting resources (authors, genres, cheats, walkthroughs, handbooks, pictures) and account/role/register data.
 
 ## Tech stack
 

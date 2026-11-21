@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "com.github.vhromada"
-version = "26.6-SNAPSHOT"
+version = "26.6"
 
 repositories {
     mavenCentral()

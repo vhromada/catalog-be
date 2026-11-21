@@ -176,7 +176,7 @@ object CheatUtils {
             CheatDataUtils.assertDomainCheatDataDeepEquals(expected = expected.data, actual = actual.data)
             if (expected.game != null) {
                 assertThat(actual.game).isNotNull
-                GameUtils.assertGameDeepEquals(expected = expected.game!!, actual = actual.game!!, checkCheat = false)
+                GameUtils.assertGameDeepEquals(expected = expected.game!!, actual = actual.game!!, checkCheat = false, checkWalkthrough = false, checkHandbook = false)
             }
         }
     }

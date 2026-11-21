@@ -47,7 +47,9 @@ class GameMapperImpl(
             saves = source.saves,
             otherData = source.otherData,
             note = source.note,
-            cheat = source.cheat != null
+            cheat = source.cheat != null,
+            walkthrough = source.walkthrough != null,
+            handbook = source.handbook != null
         )
     }
 
@@ -66,6 +68,8 @@ class GameMapperImpl(
             mediaCount = source.mediaCount!!,
             format = source.format!!,
             cheat = null,
+            walkthrough = null,
+            handbook = null,
             crack = source.crack!!,
             serialKey = source.serialKey!!,
             patch = source.patch!!,
